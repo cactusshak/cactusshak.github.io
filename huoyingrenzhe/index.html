@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>火影忍者同人漫画大全 - 同人作品分类整理与阅读指南</title>
+<meta name="description" content="火影忍者同人漫画大全，整理同人漫画的常见题材、角色向分类、阅读顺序建议与筛选方法，帮助读者快速找到想看的火影同人作品。">
+<meta name="keywords" content="火影忍者同人漫画大全,火影同人漫画,火影同人,同人漫画分类,火影角色同人">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+:root{
+  --ink:#1c1a17;
+  --ink-soft:#4a443c;
+  --paper:#f7f3ea;
+  --paper-2:#fffdf8;
+  --line:#e2d9c8;
+  --orange:#e8621f;
+  --orange-deep:#c94a10;
+  --navy:#1f2b3d;
+  --navy-soft:#2f4055;
+  --gold:#d9a441;
+  --shadow:0 10px 28px rgba(28,26,23,.08);
+  --radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Source Han Sans SC",sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.wrap{width:min(1180px,92%);margin:0 auto;}
+
+/* ===== 顶部提示条 ===== */
+.topbar{
+  background:var(--navy);
+  color:#cfd8e3;
+  font-size:13px;
+  letter-spacing:.02em;
+}
+.topbar .wrap{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:12px;padding:8px 0;flex-wrap:wrap;
+}
+.topbar strong{color:var(--gold);font-weight:600;}
+
+/* ===== 页眉 ===== */
+.site-header{
+  background:var(--paper-2);
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:40;
+  box-shadow:0 2px 12px rgba(28,26,23,.05);
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;padding:14px 0;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand-mark{
+  width:46px;height:46px;border-radius:50%;
+  background:radial-gradient(circle at 32% 28%,#ff9a4d,var(--orange) 62%,var(--orange-deep));
+  display:grid;place-items:center;
+  color:#fff;font-weight:800;font-size:20px;
+  box-shadow:0 6px 16px rgba(232,98,31,.35);
+  flex:0 0 auto;
+}
+.brand-text h1{
+  font-size:21px;line-height:1.25;letter-spacing:.01em;
+  font-weight:800;color:var(--navy);
+}
+.brand-text p{
+  font-size:12.5px;color:var(--ink-soft);letter-spacing:.06em;
+}
+.main-nav{display:flex;gap:4px;flex-wrap:wrap;}
+.main-nav a{
+  padding:8px 14px;border-radius:999px;
+  font-size:14.5px;color:var(--ink-soft);
+  transition:.2s;font-weight:500;
+}
+.main-nav a:hover{background:#f0e8d8;color:var(--orange-deep);}
+
+/* ===== 首屏 ===== */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 380px at 88% -10%,rgba(217,164,65,.22),transparent 70%),
+    radial-gradient(700px 340px at 6% 110%,rgba(232,98,31,.16),transparent 70%),
+    linear-gradient(160deg,#1f2b3d,#2a3a51 55%,#24344a);
+  color:#eef2f7;
+  padding:56px 0 60px;
+}
+.hero::after{
+  content:"";position:absolute;right:-90px;bottom:-120px;
+  width:340px;height:340px;border-radius:50%;
+  border:1px dashed rgba(217,164,65,.35);
+  pointer-events:none;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.35fr .95fr;gap:44px;align-items:center;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(217,164,65,.16);
+  border:1px solid rgba(217,164,65,.4);
+  color:#f2cf8a;font-size:13px;font-weight:600;
+  padding:5px 14px;border-radius:999px;margin-bottom:18px;
+  letter-spacing:.04em;
+}
+.hero h2{
+  font-size:clamp(26px,3.6vw,40px);
+  line-height:1.3;font-weight:800;letter-spacing:.01em;
+  margin-bottom:16px;
+}
+.hero h2 em{
+  font-style:normal;color:var(--gold);
+  border-bottom:3px solid rgba(217,164,65,.5);
+}
+.hero p.lead{
+  font-size:15.5px;color:#c8d3e0;max-width:56ch;margin-bottom:26px;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{
+  display:inline-block;padding:12px 26px;border-radius:999px;
+  font-size:15px;font-weight:600;transition:.22s;cursor:pointer;
+  border:1px solid transparent;
+}
+.btn-primary{background:var(--orange);color:#fff;box-shadow:0 8px 20px rgba(232,98,31,.35);}
+.btn-primary:hover{background:var(--orange-deep);transform:translateY(-2px);}
+.btn-ghost{border-color:rgba(238,242,247,.45);color:#eef2f7;}
+.btn-ghost:hover{background:rgba(238,242,247,.12);}
+
+.hero-panel{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--radius);
+  padding:22px 22px 18px;
+  backdrop-filter:blur(4px);
+}
+.hero-panel h3{
+  font-size:15px;color:#f2cf8a;font-weight:700;margin-bottom:14px;
+  letter-spacing:.05em;
+}
+.hero-panel ul{list-style:none;display:grid;gap:10px;}
+.hero-panel li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:14px;color:#d5dee9;line-height:1.6;
+}
+.hero-panel li span.dot{
+  flex:0 0 auto;width:7px;height:7px;border-radius:50%;
+  background:var(--orange);margin-top:9px;
+}
+
+/* ===== 通用区块 ===== */
+section{padding:56px 0;}
+.section-head{margin-bottom:30px;}
+.section-head .kicker{
+  font-size:13px;font-weight:700;color:var(--orange-deep);
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;
+}
+.section-head h2{
+  font-size:clamp(21px,2.6vw,28px);font-weight:800;color:var(--navy);
+  line-height:1.35;
+}
+.section-head p{
+  margin-top:10px;font-size:15px;color:var(--ink-soft);max-width:74ch;
+}
+
+/* ===== 分类卡片 ===== */
+.cat-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;
+}
+.cat-card{
+  background:var(--paper-2);border:1px solid var(--line);
+  border-radius:var(--radius);padding:22px 20px;
+  box-shadow:var(--shadow);transition:.24s;
+  display:flex;flex-direction:column;gap:10px;
+}
+.cat-card:hover{transform:translateY(-4px);border-color:#e8c9a8;}
+.cat-card .num{
+  font-size:12px;font-weight:800;color:#b9ad96;letter-spacing:.12em;
+}
+.cat-card h3{font-size:17px;color:var(--navy);font-weight:700;}
+.cat-card p{font-size:14px;color:var(--ink-soft);}
+.cat-card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
+.tag{
+  font-size:12px;padding:3px 10px;border-radius:999px;
+  background:#f4ecdd;color:#8a6a3c;border:1px solid #ebdfc8;
+}
+
+/* ===== 角色向列表 ===== */
+.char-section{background:#fbf8f1;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.char-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:start;}
+.char-list{display:grid;gap:14px;}
+.char-item{
+  background:var(--paper-2);border:1px solid var(--line);
+  border-left:4px solid var(--orange);
+  border-radius:10px;padding:16px 18px;transition:.2s;
+}
+.char-item:hover{box-shadow:var(--shadow);}
+.char-item h3{font-size:16px;color:var(--navy);margin-bottom:6px;font-weight:700;}
+.char-item p{font-size:14px;color:var(--ink-soft);}
+.side-note{
+  background:linear-gradient(165deg,#fff8ec,#fdf1de);
+  border:1px solid #f0dcbd;border-radius:var(--radius);
+  padding:24px 22px;
+}
+.side-note h3{
+  font-size:16px;color:var(--orange-deep);font-weight:800;margin-bottom:12px;
+}
+.side-note ol{padding-left:18px;display:grid;gap:10px;font-size:14px;color:var(--ink-soft);}
+.side-note ol li::marker{color:var(--orange);font-weight:700;}
+
+/* ===== 阅读指南 ===== */
+.guide-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;
+}
+.guide-card{
+  background:var(--paper-2);border:1px solid var(--line);
+  border-radius:var(--radius);padding:24px 22px;box-shadow:var(--shadow);
+}
+.guide-card .icon{
+  width:40px;height:40px;border-radius:10px;
+  background:linear-gradient(140deg,#2a3a51,#1f2b3d);
+  color:var(--gold);display:grid;place-items:center;
+  font-size:18px;font-weight:800;margin-bottom:14px;
+}
+.guide-card h3{font-size:17px;color:var(--navy);margin-bottom:10px;font-weight:700;}
+.guide-card p{font-size:14.5px;color:var(--ink-soft);}
+.guide-card ul{margin-top:10px;padding-left:18px;font-size:14px;color:var(--ink-soft);display:grid;gap:6px;}
+.guide-card ul li::marker{color:var(--orange);}
+
+/* ===== 筛选要点 ===== */
+.filter-section{background:var(--navy);color:#dfe6ef;}
+.filter-section .section-head h2{color:#fff;}
+.filter-section .section-head .kicker{color:var(--gold);}
+.filter-section .section-head p{color:#b6c2d1;}
+.filter-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;
+}
+.filter-box{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:var(--radius);padding:20px;
+}
+.filter-box h3{
+  font-size:15.5px;color:var(--gold);font-weight:700;margin-bottom:10px;
+}
+.filter-box p{font-size:14px;color:#c3cddb;}
+
+/* ===== 常见问题 ===== */
+.faq-list{display:grid;gap:12px;}
+.faq-item{
+  background:var(--paper-2);border:1px solid var(--line);
+  border-radius:12px;overflow:hidden;
+}
+.faq-item summary{
+  cursor:pointer;list-style:none;padding:16px 20px;
+  font-size:15.5px;font-weight:700;color:var(--navy);
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{
+  content:"+";font-size:20px;color:var(--orange);font-weight:400;
+  flex:0 0 auto;transition:.2s;
+}
+.faq-item[open] summary::after{content:"–";}
+.faq-item .faq-body{
+  padding:0 20px 18px;font-size:14.5px;color:var(--ink-soft);
+  border-top:1px dashed var(--line);padding-top:14px;
+}
+
+/* ===== 页脚 ===== */
+.site-footer{
+  background:#171f2b;color:#9aa7b8;padding:44px 0 26px;font-size:14px;
+}
+.footer-grid{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:32px;
+  padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.1);
+}
+.footer-grid h3{
+  color:#eef2f7;font-size:15px;margin-bottom:12px;font-weight:700;
+}
+.footer-grid p{font-size:13.5px;line-height:1.8;}
+.footer-grid ul{list-style:none;display:grid;gap:8px;font-size:13.5px;}
+.footer-grid ul a:hover{color:var(--gold);}
+.footer-bottom{
+  padding-top:18px;display:flex;justify-content:space-between;
+  gap:14px;flex-wrap:wrap;font-size:13px;color:#7b889a;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:30px;}
+  .char-layout{grid-template-columns:1fr;gap:26px;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:640px){
+  .topbar .wrap{justify-content:center;text-align:center;}
+  .header-inner{justify-content:center;text-align:center;}
+  .brand{justify-content:center;}
+  .main-nav{justify-content:center;}
+  .main-nav a{padding:7px 11px;font-size:14px;}
+  section{padding:42px 0;}
+  .hero{padding:44px 0 48px;}
+  .hero-actions .btn{width:100%;text-align:center;}
+  .footer-grid{grid-template-columns:1fr;gap:22px;}
+  .footer-bottom{justify-content:center;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>同人创作交流索引 · 内容均为爱好者创作整理</span>
+    <span><strong>提示：</strong>请支持正版原作，尊重作者版权与创作声明</span>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <div class="brand">
+      <div class="brand-mark">忍</div>
+      <div class="brand-text">
+        <h1>火影忍者同人漫画大全</h1>
+        <p>分类 · 角色向 · 阅读指南</p>
+      </div>
+    </div>
+    <nav class="main-nav" aria-label="主导航">
+      <a href="#categories">题材分类</a>
+      <a href="#characters">角色向索引</a>
+      <a href="#guide">阅读指南</a>
+      <a href="#filter">筛选要点</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="hero-tag">同人漫画 · 分类整理</span>
+        <h2>找火影同人漫画，先搞清楚<em>想看哪一种</em></h2>
+        <p class="lead">
+          “火影忍者同人漫画大全”通常不是指某一个固定站点，而是读者对同人作品进行归类、检索与挑选的需求。
+          本页把常见的题材方向、角色中心、篇幅形态与阅读顺序整理成清晰的索引结构，
+          帮助你从“想看什么”出发，而不是在大量作品里盲目翻找。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#categories">查看题材分类</a>
+          <a class="btn btn-ghost" href="#guide">阅读与筛选建议</a>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <h3>快速定位思路</h3>
+        <ul>
+          <li><span class="dot"></span>先确定是“角色中心”还是“剧情补完”</li>
+          <li><span class="dot"></span>再区分短篇、连载、单元合集等篇幅形态</li>
+          <li><span class="dot"></span>留意作者标注的设定前提与时间线位置</li>
+          <li><span class="dot"></span>关注完结状态，避免追到一半中断</li>
+          <li><span class="dot"></span>尊重作者声明，不擅自转载与商用</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 题材分类 -->
+  <section id="categories">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Categories</div>
+        <h2>火影同人漫画的常见题材分类</h2>
+        <p>
+          同人作品的分类方式并没有统一标准，但读者在检索时最常用的维度大致是这几类。
+          了解分类逻辑，比记住某个具体作品名更有用，因为它能帮你在任何平台上快速判断一部作品是否合口味。
+        </p>
+      </div>
+      <div class="cat-grid">
+        <article class="cat-card">
+          <span class="num">01</span>
+          <h3>剧情补完向</h3>
+          <p>围绕原作留白展开，例如某些角色的过往经历、战争间隙的日常、结局之后的走向。这类作品重设定自洽，阅读时适合对原作时间线较熟悉的读者。</p>
+          <div class="tags"><span class="tag">时间线</span><span class="tag">设定考据</span><span class="tag">中长篇</span></div>
+        </article>
+        <article class="cat-card">
+          <span class="num">02</span>
+          <h3>角色中心向</h3>
+          <p>以某一位角色为叙事核心，展开其视角下的故事。常见于配角或人气角色，篇幅可长可短，重点在于人物性格的还原度与内心刻画。</p>
+          <div class="tags"><span class="tag">人物刻画</span><span class="tag">视角切换</span><span class="tag">短篇居多</span></div>
+        </article>
+        <article class="cat-card">
+          <span class="num">03</span>
+          <h3>日常与轻松向</h3>
+          <p>弱化战斗与主线压力，聚焦忍者学校、任务间隙、村落生活等场景。节奏舒缓，适合作为长篇阅读之间的调剂。</p>
+          <div class="tags"><span class="tag">日常</span><span class="tag">群像</span><span class="tag">单元剧</span></div>
+        </article>
+        <article class="cat-card">
+          <span class="num">04</span>
+          <h3>平行设定向</h3>
+          <p>改变原作某个关键节点后重新推演，例如身份互换、阵营变化、时代背景迁移。阅读前建议先看作者给出的设定说明，避免理解偏差。</p>
+          <div class="tags"><span class="tag">AU 设定</span><span class="tag">推演</span><span class="tag">长篇</span></div>
+        </article>
+        <article class="cat-card">
+          <span class="num">05</span>
+          <h3>战斗与忍术向</h3>
+          <p>以忍术体系、体术对决、战术博弈为核心看点。这类作品对分镜与战斗节奏要求较高，读者通常更关注招式逻辑与实力设定是否合理。</p>
+          <div class="tags"><span class="tag">忍术设定</span><span class="tag">战斗分镜</span><span class="tag">热血</span></div>
+        </article>
+        <article class="cat-card">
+          <span class="num">06</span>
+          <h3>短篇合集与四格</h3>
+          <p>以单话或数话为一组，题材灵活、门槛低。适合碎片时间阅读，也常被用来快速了解一位作者的画风与叙事风格。</p>
+          <div class="tags"><span class="tag">四格</span><span class="tag">短篇</span><span class="tag">轻松</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 角色向索引 -->
+  <section id="characters" class="char-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Character Index</div>
+        <h2>按角色方向检索同人作品</h2>
+        <p>
+          角色是火影同人最常用的检索入口。同一个角色在不同作者笔下可能呈现完全不同的侧重点，
+          因此除了角色名，还要留意作品标注的“关系向”“成长向”或“群像向”等说明。
+        </p>
+      </div>
+      <div class="char-layout">
+        <div class="char-list">
+          <article class="char-item">
+            <h3>第七班相关</h3>
+            <p>围绕主角团队展开的作品数量最多，题材跨度也最大，从日常互动到任务协作均有涉及。检索时建议叠加篇幅或完结状态条件，缩小范围。</p>
+          </article>
+          <article class="char-item">
+            <h3>宇智波一族相关</h3>
+            <p>因原作中该族群的背景线索较多，同人创作常集中在家族历史、写轮眼设定与族内关系等方向，设定类作品比例偏高。</p>
+          </article>
+          <article class="char-item">
+            <h3>砂隐村与风之国相关</h3>
+            <p>以砂隐角色为中心的作品，往往更注重人物成长线与村落关系描写，适合偏好人物弧光的读者。</p>
+          </article>
+          <article class="char-item">
+            <h3>晓组织相关</h3>
+            <p>该组织成员众多、立场复杂，同人作品常见两种倾向：一种是组织内部的日常与关系描写，另一种是对其行动逻辑的重新解读。</p>
+          </article>
+          <article class="char-item">
+            <h3>历代火影与前辈忍者</h3>
+            <p>聚焦前代人物与历史事件的作品，通常需要读者对原作背景有一定了解，阅读门槛略高，但设定密度往往更大。</p>
+          </article>
+          <article class="char-item">
+            <h3>群像与全员向</h3>
+            <p>不突出单一角色，而是以村落、时代或某个事件为线索串联多个人物，适合喜欢整体世界观的读者。</p>
+          </article>
+        </div>
+        <aside class="side-note">
+          <h3>检索小建议</h3>
+          <ol>
+            <li>先用角色名或题材词缩小范围，再按篇幅和完结状态二次筛选。</li>
+            <li>留意作者在作品说明中标注的时间线位置，避免与记忆中的剧情冲突。</li>
+            <li>同一作者的多部作品往往风格统一，喜欢一部可以顺带查看其其他作品。</li>
+            <li>遇到标注“未完结”的长篇，可以先看更新节奏再决定是否追读。</li>
+            <li>保存喜欢的作品链接时，同时记下作者名，便于后续查找。</li>
+          </ol>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 阅读指南 -->
+  <section id="guide">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Reading Guide</div>
+        <h2>同人漫画的阅读与挑选方法</h2>
+        <p>
+          同人作品质量参差是常态，与其追求“看完全部”，不如建立一套自己的筛选习惯。
+          下面几个维度在实际挑选中比单纯看热度更有效。
+        </p>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card">
+          <div class="icon">阅</div>
+          <h3>先看作品说明</h3>
+          <p>正规发布的作品通常会在开头或简介中说明设定前提、涉及角色、篇幅与更新状态。花一分钟读完说明，能省下大量试读时间。</p>
+          <ul>
+            <li>是否标注时间线位置</li>
+            <li>是否说明改编幅度</li>
+            <li>是否注明完结或连载中</li>
+          </ul>
+        </article>
+        <article class="guide-card">
+          <div class="icon">序</div>
+          <h3>建立个人阅读顺序</h3>
+          <p>建议从短篇或单元合集入手，熟悉常见叙事风格后再进入长篇。长篇作品适合按作者更新顺序阅读，避免跳章造成理解断层。</p>
+          <ul>
+            <li>短篇入门，长篇深入</li>
+            <li>同作者作品集中阅读</li>
+            <li>同一设定线按发布顺序看</li>
+          </ul>
+        </article>
+        <article class="guide-card">
+          <div class="icon">辨</div>
+          <h3>判断画风与叙事是否合口味</h3>
+          <p>画风偏好因人而异，没有绝对标准。可以先看前几页的分镜节奏与人物比例，再决定是否继续，避免因为开头不习惯而错过合适的作品。</p>
+          <ul>
+            <li>关注分镜是否清晰</li>
+            <li>留意对白密度</li>
+            <li>观察人物形象还原度</li>
+          </ul>
+        </article>
+        <article class="guide-card">
+          <div class="icon">礼</div>
+          <h3>尊重作者与创作边界</h3>
+          <p>同人作品建立在原作基础上，作者通常会在页面中标注使用规范。阅读时请遵守作者声明，不擅自转载、不用于商业用途，也不要在评论区发布攻击性内容。</p>
+          <ul>
+            <li>遵守作者转载声明</li>
+            <li>不用于商业传播</li>
+            <li>理性讨论，友善交流</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 筛选要点 -->
+  <section id="filter" class="filter-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Filtering</div>
+        <h2>筛选同人作品时的四个关键点</h2>
+        <p>
+          面对数量庞大的同人作品，用固定的几个判断维度可以显著提高挑选效率。
+          这些维度不涉及具体平台，任何检索场景都适用。
+        </p>
+      </div>
+      <div class="filter-grid">
+        <div class="filter-box">
+          <h3>篇幅形态</h3>
+          <p>短篇、中篇、长篇连载各有阅读节奏差异。时间有限的读者优先选择短篇与单元合集，追求沉浸感的读者可考虑长篇。</p>
+        </div>
+        <div class="filter-box">
+          <h3>完结状态</h3>
+          <p>完结作品可以一次性读完，体验完整；连载中作品需要关注更新频率与作者是否长期活跃，避免长期停更带来的阅读中断。</p>
+        </div>
+        <div class="filter-box">
+          <h3>设定偏离度</h3>
+          <p>有的作品紧贴原作，有的则大幅改编。偏离度本身没有优劣，关键是符不符合你当下的阅读预期，提前看清说明即可。</p>
+        </div>
+        <div class="filter-box">
+          <h3>内容标注</h3>
+          <p>部分作品会标注适合的阅读人群或内容提示。阅读前留意这些标注，既是尊重作者，也是对自己阅读体验的负责。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 常见问题 -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">FAQ</div>
+        <h2>关于火影忍者同人漫画的常见问题</h2>
+        <p>以下问题来自读者在检索和阅读同人作品时最常遇到的困惑，回答尽量保持客观与稳妥。</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary>“火影忍者同人漫画大全”是指某一个网站吗？</summary>
+          <div class="faq-body">
+            不是。这个说法更多是读者对“集中查找火影同人漫画”这类需求的概括表达。同人作品分散在不同平台与作者个人发布渠道中，并不存在一个官方统一的汇总站点。因此，掌握分类与筛选方法，比记住某个具体入口更实用。
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>同人漫画和原作是什么关系？</summary>
+          <div class="faq-body">
+            同人漫画是爱好者基于原作世界观、角色或设定进行的二次创作，属于独立于原作的衍生内容。它不代表原作官方立场，剧情与设定也不应被当作原作内容来看待。阅读时把它们作为独立的创作来欣赏即可。
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>怎样判断一部同人作品是否适合自己？</summary>
+          <div class="faq-body">
+            可以从三个方面入手：一是看作品说明中标注的题材与设定前提；二是试读开头几页，感受画风与叙事节奏；三是确认篇幅与完结状态是否符合你的阅读时间安排。三点都合适，再投入时间深入阅读。
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>阅读同人作品需要注意什么？</summary>
+          <div class="faq-body">
+            最重要的是尊重作者的创作声明与转载规范。不擅自搬运、不用于商业用途、不篡改作者署名，是基本的交流礼仪。同时在评论区保持理性讨论，避免因角色偏好产生不必要的争执。
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>同人作品会涉及原作剧透吗？</summary>
+          <div class="faq-body">
+            有可能。尤其是剧情补完向与平行设定向的作品，往往会引用或改写原作关键情节。如果你尚未看完原作，建议优先选择日常向或角色中心向的短篇，降低被剧透的概率。
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3>火影忍者同人漫画大全</h3>
+        <p>
+          一个面向同人读者的内容索引页，整理题材分类、角色向检索方式与阅读挑选建议。
+          页面内容为分类方法与阅读经验整理，不提供作品下载与转载服务。
+        </p>
+      </div>
+      <div>
+        <h3>页面导航</h3>
+        <ul>
+          <li><a href="#categories">题材分类</a></li>
+          <li><a href="#characters">角色向索引</a></li>
+          <li><a href="#guide">阅读指南</a></li>
+          <li><a href="#filter">筛选要点</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>阅读提醒</h3>
+        <ul>
+          <li>支持正版原作与官方内容</li>
+          <li>尊重同人作者创作声明</li>
+          <li>不擅自转载与商业使用</li>
+          <li>理性讨论，友善交流</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>本站为同人内容分类整理与阅读指南页面</span>
+      <span>同人作品版权归各自作者所有</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(function(item){
+    item.addEventListener('toggle', function(){
+      if(item.open){
+        faqItems.forEach(function(other){
+          if(other !== item){ other.open = false; }
+        });
+      }
+    });
+  });
+
+  var navLinks = document.querySelectorAll('.main-nav a[href^="#"]');
+  navLinks.forEach(function(link){
+    link.addEventListener('click', function(e){
+      var targetId = this.getAttribute('href').slice(1);
+      var target = document.getElementById(targetId);
+      if(target){
+        e.preventDefault();
+        var offset = 74;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+  </html>
