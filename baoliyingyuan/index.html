@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>保利影院-影讯排片、观影指南与影院服务信息</title>
+<meta name="description" content="保利影院观影信息页，介绍影院影讯排片查看方式、购票选座流程、影厅类型、会员权益、交通停车与观影注意事项，帮助你更顺畅地安排一次观影。">
+<meta name="keywords" content="保利影院,保利影院影讯,保利影院排片,影院购票,观影指南,影厅选座">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+  :root{
+    --ink:#141a24;
+    --ink-soft:#3d4a5c;
+    --muted:#6b7787;
+    --line:#e2e6ee;
+    --bg:#f5f6fa;
+    --panel:#ffffff;
+    --brand:#0f3d6e;
+    --brand-2:#1c6fb8;
+    --gold:#d8a13a;
+    --gold-soft:#fdf4e0;
+    --radius:14px;
+    --shadow:0 10px 28px rgba(15,61,110,.08);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.75;
+    font-size:16px;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;}
+  .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 20px;}
+
+  /* ---------- 顶栏 ---------- */
+  .topbar{
+    background:var(--brand);
+    color:#dbe6f3;
+    font-size:13px;
+  }
+  .topbar .wrap{
+    display:flex;justify-content:space-between;align-items:center;
+    gap:12px;min-height:38px;flex-wrap:wrap;
+  }
+  .topbar span{opacity:.85;}
+
+  /* ---------- 页眉 ---------- */
+  header.site-head{
+    background:linear-gradient(120deg,#0b2f57 0%,#124a80 55%,#1c6fb8 100%);
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+  }
+  header.site-head::after{
+    content:"";
+    position:absolute;right:-120px;top:-120px;
+    width:420px;height:420px;border-radius:50%;
+    background:radial-gradient(circle,rgba(216,161,58,.28),transparent 68%);
+  }
+  .head-inner{
+    position:relative;z-index:1;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:20px;padding:18px 0;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-mark{
+    width:46px;height:46px;border-radius:12px;
+    background:linear-gradient(140deg,var(--gold),#b8801f);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:20px;color:#1a1206;
+    letter-spacing:1px;flex:0 0 auto;
+  }
+  .brand-text strong{display:block;font-size:20px;letter-spacing:1px;}
+  .brand-text small{color:#b9cde4;font-size:12px;letter-spacing:2px;}
+
+  nav.main-nav ul{
+    list-style:none;display:flex;gap:6px;margin:0;padding:0;flex-wrap:wrap;
+  }
+  nav.main-nav a{
+    display:block;padding:8px 14px;border-radius:999px;
+    font-size:14px;color:#dce8f6;transition:.2s;
+  }
+  nav.main-nav a:hover,nav.main-nav a.active{
+    background:rgba(255,255,255,.14);color:#fff;
+  }
+
+  /* ---------- 首屏 ---------- */
+  .hero{padding:34px 0 46px;position:relative;z-index:1;}
+  .hero-grid{
+    display:grid;grid-template-columns:1.35fr .95fr;gap:34px;align-items:start;
+  }
+  .hero h1{
+    font-size:34px;line-height:1.35;margin:0 0 16px;letter-spacing:.5px;
+  }
+  .hero h1 em{font-style:normal;color:var(--gold);}
+  .hero p.lead{
+    margin:0 0 22px;color:#c8d8ea;font-size:15.5px;
+  }
+  .quick-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px;}
+  .quick-tags a{
+    font-size:13px;padding:6px 14px;border-radius:999px;
+    border:1px solid rgba(255,255,255,.28);color:#e6eefa;transition:.2s;
+  }
+  .quick-tags a:hover{background:rgba(255,255,255,.16);}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:12px 24px;border-radius:10px;
+    font-size:15px;font-weight:600;transition:.2s;border:1px solid transparent;
+  }
+  .btn-gold{background:linear-gradient(135deg,#e6b455,#c9902a);color:#241703;}
+  .btn-gold:hover{filter:brightness(1.07);}
+  .btn-ghost{border-color:rgba(255,255,255,.45);color:#fff;}
+  .btn-ghost:hover{background:rgba(255,255,255,.12);}
+
+  .hero-card{
+    background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:var(--radius);
+    padding:22px;backdrop-filter:blur(4px);
+  }
+  .hero-card h2{
+    font-size:16px;margin:0 0 14px;color:#fff;letter-spacing:.5px;
+  }
+  .hero-card ul{margin:0;padding-left:18px;color:#cfdcec;font-size:14px;}
+  .hero-card li{margin-bottom:9px;}
+  .hero-card li:last-child{margin-bottom:0;}
+
+  /* ---------- 通用区块 ---------- */
+  section{padding:52px 0;}
+  section.tight{padding:40px 0;}
+  .sec-head{margin-bottom:28px;}
+  .sec-head h2{
+    font-size:24px;margin:0 0 8px;letter-spacing:.5px;
+  }
+  .sec-head p{margin:0;color:var(--muted);font-size:14.5px;}
+  .sec-head .rule{
+    width:52px;height:3px;border-radius:3px;background:var(--gold);margin-bottom:16px;
+  }
+
+  .panel{background:var(--panel);border-radius:var(--radius);box-shadow:var(--shadow);}
+
+  /* ---------- 影讯须知 ---------- */
+  .notice-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  }
+  .notice-card{
+    background:var(--panel);border-radius:var(--radius);padding:24px;
+    box-shadow:var(--shadow);border-top:3px solid var(--brand-2);
+  }
+  .notice-card h3{font-size:17px;margin:0 0 10px;}
+  .notice-card p{margin:0;color:var(--ink-soft);font-size:14.5px;}
+
+  /* ---------- 排片流程 ---------- */
+  .flow{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:step;
+  }
+  .flow-item{
+    background:var(--panel);border-radius:var(--radius);padding:24px 22px;
+    box-shadow:var(--shadow);position:relative;
+  }
+  .flow-item::before{
+    counter-increment:step;content:counter(step,decimal-leading-zero);
+    font-size:13px;font-weight:700;color:var(--gold);
+    display:block;margin-bottom:10px;letter-spacing:1px;
+  }
+  .flow-item h3{font-size:16px;margin:0 0 8px;}
+  .flow-item p{margin:0;font-size:14px;color:var(--ink-soft);}
+
+  /* ---------- 影厅类型 ---------- */
+  .hall-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:start;}
+  .hall-list{display:grid;gap:14px;}
+  .hall-row{
+    background:var(--panel);border-radius:12px;padding:18px 20px;
+    box-shadow:var(--shadow);display:flex;gap:16px;align-items:flex-start;
+  }
+  .hall-badge{
+    flex:0 0 auto;width:44px;height:44px;border-radius:10px;
+    background:var(--gold-soft);color:#96690f;
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;text-align:center;line-height:1.15;
+  }
+  .hall-row h3{margin:0 0 6px;font-size:16px;}
+  .hall-row p{margin:0;font-size:14px;color:var(--ink-soft);}
+
+  .aside-box{
+    background:linear-gradient(160deg,#0f3d6e,#1c6fb8);
+    color:#e8f0fa;border-radius:var(--radius);padding:26px;
+    box-shadow:var(--shadow);
+  }
+  .aside-box h3{margin:0 0 14px;font-size:17px;color:#fff;}
+  .aside-box ul{margin:0;padding-left:18px;font-size:14px;}
+  .aside-box li{margin-bottom:10px;}
+  .aside-box li:last-child{margin-bottom:0;}
+
+  /* ---------- 购票与选座 ---------- */
+  .buy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .buy-card{
+    background:var(--panel);border-radius:var(--radius);padding:26px;
+    box-shadow:var(--shadow);
+  }
+  .buy-card h3{font-size:17px;margin:0 0 12px;display:flex;align-items:center;gap:9px;}
+  .buy-card h3 .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--gold);flex:0 0 auto;
+  }
+  .buy-card ul{margin:0;padding-left:18px;font-size:14.5px;color:var(--ink-soft);}
+  .buy-card li{margin-bottom:8px;}
+  .buy-card li:last-child{margin-bottom:0;}
+
+  /* ---------- 服务与权益 ---------- */
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .service-card{
+    background:var(--panel);border-radius:var(--radius);padding:24px;
+    box-shadow:var(--shadow);border:1px solid var(--line);
+  }
+  .service-card h3{font-size:16px;margin:0 0 10px;color:var(--brand);}
+  .service-card p{margin:0;font-size:14px;color:var(--ink-soft);}
+
+  /* ---------- 观影贴士 ---------- */
+  .tips{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:30px 32px;}
+  .tips-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 34px;}
+  .tip{
+    display:flex;gap:12px;align-items:flex-start;
+    padding:12px 0;border-bottom:1px dashed var(--line);
+  }
+  .tip:last-child,.tips-grid .tip:nth-last-child(2){border-bottom:none;}
+  .tip .ico{
+    flex:0 0 auto;width:24px;height:24px;border-radius:50%;
+    background:var(--brand-2);color:#fff;font-size:13px;
+    display:flex;align-items:center;justify-content:center;margin-top:3px;
+  }
+  .tip p{margin:0;font-size:14.5px;color:var(--ink-soft);}
+  .tip strong{color:var(--ink);}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{display:grid;gap:12px;}
+  details.faq{
+    background:var(--panel);border-radius:12px;border:1px solid var(--line);
+    padding:0 20px;box-shadow:0 4px 14px rgba(15,61,110,.05);
+  }
+  details.faq summary{
+    cursor:pointer;list-style:none;padding:17px 0;
+    font-size:15.5px;font-weight:600;color:var(--ink);
+    display:flex;justify-content:space-between;align-items:center;gap:14px;
+  }
+  details.faq summary::-webkit-details-marker{display:none;}
+  details.faq summary::after{
+    content:"+";font-size:20px;color:var(--brand-2);font-weight:400;flex:0 0 auto;
+  }
+  details.faq[open] summary::after{content:"–";}
+  details.faq .ans{
+    padding:0 0 18px;font-size:14.5px;color:var(--ink-soft);
+    border-top:1px solid var(--line);padding-top:14px;
+  }
+
+  /* ---------- 页脚 ---------- */
+  footer.site-foot{
+    background:#0d1b2c;color:#9fb2c8;padding:46px 0 26px;font-size:14px;
+  }
+  .foot-grid{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;
+    padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .foot-grid h4{color:#fff;font-size:15px;margin:0 0 14px;}
+  .foot-grid p{margin:0 0 10px;line-height:1.8;}
+  .foot-grid ul{list-style:none;margin:0;padding:0;}
+  .foot-grid li{margin-bottom:9px;}
+  .foot-grid a:hover{color:#fff;}
+  .foot-bottom{
+    padding-top:20px;display:flex;justify-content:space-between;
+    gap:14px;flex-wrap:wrap;font-size:13px;color:#7c8ea6;
+  }
+
+  /* ---------- 响应式 ---------- */
+  @media (max-width:1000px){
+    .hero-grid{grid-template-columns:1fr;}
+    .notice-grid,.service-grid{grid-template-columns:repeat(2,1fr);}
+    .flow{grid-template-columns:repeat(2,1fr);}
+    .hall-layout{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:680px){
+    body{font-size:15px;}
+    .hero h1{font-size:26px;}
+    section{padding:38px 0;}
+    .notice-grid,.service-grid,.flow,.buy-grid,.tips-grid{grid-template-columns:1fr;}
+    .head-inner{flex-direction:column;align-items:flex-start;}
+    nav.main-nav ul{gap:2px;}
+    nav.main-nav a{padding:7px 11px;font-size:13px;}
+    .tips{padding:22px 20px;}
+    .foot-grid{grid-template-columns:1fr;}
+    .sec-head h2{font-size:21px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>影院信息参考页 · 影讯、排片与观影服务说明</span>
+    <span>具体场次与票价请以影院当日实际公布为准</span>
+  </div>
+</div>
+
+<header class="site-head">
+  <div class="wrap head-inner">
+    <div class="brand">
+      <div class="brand-mark">保</div>
+      <div class="brand-text">
+        <strong>保利影院</strong>
+        <small>观影信息与选座指南</small>
+      </div>
+    </div>
+    <nav class="main-nav" aria-label="主导航">
+      <ul>
+        <li><a href="#notice" class="active">观影须知</a></li>
+        <li><a href="#flow">排片流程</a></li>
+        <li><a href="#hall">影厅类型</a></li>
+        <li><a href="#buy">购票选座</a></li>
+        <li><a href="#service">服务权益</a></li>
+        <li><a href="#faq">常见问题</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="wrap hero">
+    <div class="hero-grid">
+      <div>
+        <h1>保利影院观影信息：<em>先看影讯排片，再决定怎么买票选座</em></h1>
+        <p class="lead">如果你正在搜索保利影院，通常想确认三件事：今天或近期有哪些影片在映、场次时间怎么查、买票和进场要注意什么。本页把这几件事按顺序讲清楚，帮助你少走弯路，把注意力留给电影本身。</p>
+        <div class="quick-tags">
+          <a href="#notice">当日影讯怎么看</a>
+          <a href="#flow">排片查询流程</a>
+          <a href="#hall">普通厅与特效厅</a>
+          <a href="#buy">在线选座要点</a>
+          <a href="#faq">退改签说明</a>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#flow">了解排片查询方式</a>
+          <a class="btn btn-ghost" href="#faq">查看常见问题</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h2>出发前建议先确认</h2>
+        <ul>
+          <li>目标影院的具体门店名称与所在商圈，同名门店容易混淆。</li>
+          <li>影片的放映版本：2D、3D、IMAX、中国巨幕等，票价与影厅不同。</li>
+          <li>场次开场时间与检票时间，建议提前到场取票。</li>
+          <li>是否需要对号入座，以及儿童、学生等票种规定。</li>
+          <li>停车、地铁末班车与散场后的返程安排。</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- 观影须知 -->
+  <section id="notice">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="rule"></div>
+        <h2>保利影院观影须知：先弄清这三件事</h2>
+        <p>影讯、场次和票务规则是观影体验的基础，提前了解可以避免临时改计划。</p>
+      </div>
+      <div class="notice-grid">
+        <article class="notice-card">
+          <h3>一、影讯以门店当日为准</h3>
+          <p>影院排片会随上座率、影片密钥档期和临时调整而变化。同一部电影在不同门店、不同日期的场次并不相同，建议以购票平台或影院现场公布的当日排片表为准，不要只依赖几天前看到的截图。</p>
+        </article>
+        <article class="notice-card">
+          <h3>二、版本决定影厅与票价</h3>
+          <p>同一部影片可能同时提供普通 2D、3D、巨幕或特效版本。版本不同，对应的影厅、银幕尺寸、音响配置和票价都会有差异。购票前看清版本标识，避免到了现场才发现与预期不符。</p>
+        </article>
+        <article class="notice-card">
+          <h3>三、票务规则看下单页面</h3>
+          <p>退票、改签、优惠券使用、会员折扣等规则由具体购票渠道和影院共同决定。下单前阅读页面提示，保留订单信息，遇到问题优先联系购票渠道客服或影院服务台。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 排片查询流程 -->
+  <section id="flow" class="tight">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="rule"></div>
+        <h2>排片查询与购票的四个步骤</h2>
+        <p>按顺序操作，通常几分钟内就能确定一场合适的电影。</p>
+      </div>
+      <div class="flow">
+        <article class="flow-item">
+          <h3>锁定门店</h3>
+          <p>先确定要去哪一家保利影院门店，结合通勤距离、商圈环境、停车条件和散场时间综合选择，而不是只看票价。</p>
+        </article>
+        <article class="flow-item">
+          <h3>筛选影片与日期</h3>
+          <p>在购票平台选择日期，查看当天在映影片列表。注意区分正在热映与即将上映，后者通常只提供预售场次。</p>
+        </article>
+        <article class="flow-item">
+          <h3>比对场次与影厅</h3>
+          <p>同一影片可能有多个场次，比较开场时间、影厅类型、剩余座位分布，挑选兼顾时间和观影效果的场次。</p>
+        </article>
+        <article class="flow-item">
+          <h3>选座并完成支付</h3>
+          <p>按座位图选座，确认人数与票价后支付。支付完成后留意取票码或电子票信息，并记下检票截止时间。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 影厅类型 -->
+  <section id="hall">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="rule"></div>
+        <h2>影厅类型与观影效果的关系</h2>
+        <p>不同影厅在银幕、音响和座位布局上各有侧重，选对影厅往往比选对场次更影响体验。</p>
+      </div>
+      <div class="hall-layout">
+        <div class="hall-list">
+          <div class="hall-row">
+            <div class="hall-badge">普通<br>厅</div>
+            <div>
+              <h3>标准放映厅</h3>
+              <p>最常见的影厅类型，适合剧情片、喜剧片、家庭题材等以内容为主的影片。座位数量较多，场次密度高，时间安排灵活。</p>
+            </div>
+          </div>
+          <div class="hall-row">
+            <div class="hall-badge">3D<br>厅</div>
+            <div>
+              <h3>立体放映厅</h3>
+              <p>需要佩戴3D眼镜观看，画面层次感更强。部分影院对眼镜收取押金或提供购买选项，近视观众可留意是否支持夹片式眼镜。</p>
+            </div>
+          </div>
+          <div class="hall-row">
+            <div class="hall-badge">巨幕<br>厅</div>
+            <div>
+              <h3>大银幕影厅</h3>
+              <p>银幕尺寸与音响系统规格更高，适合视效突出的动作片、科幻片和纪录类大片。座位排距通常更宽，观影沉浸感更明显。</p>
+            </div>
+          </div>
+          <div class="hall-row">
+            <div class="hall-badge">特色<br>厅</div>
+            <div>
+              <h3>主题与舒适型影厅</h3>
+              <p>部分门店设有情侣座、沙发座或主题影厅，座椅间距和舒适度更高。此类影厅座位数较少，建议提前购票。</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="aside-box">
+          <h3>选厅小建议</h3>
+          <ul>
+            <li>看视效大片优先考虑巨幕或特效厅，普通厅也能看，但画面冲击力会有差别。</li>
+            <li>带儿童观影尽量选择靠走道、离出口较近的座位，方便中途进出。</li>
+            <li>对音量和画面稳定性敏感，可优先选择中间偏后的座位区域。</li>
+            <li>同一影厅内，前排两侧视角偏差较大，选座时留意座位图上的视角提示。</li>
+            <li>影厅实际配置以门店现场为准，不同门店可能存在差异。</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 购票与选座 -->
+  <section id="buy">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="rule"></div>
+        <h2>购票渠道与选座要点</h2>
+        <p>渠道不同，价格、优惠和退改规则可能不同，先比较再下单更稳妥。</p>
+      </div>
+      <div class="buy-grid">
+        <article class="buy-card">
+          <h3><span class="dot"></span>常见购票渠道</h3>
+          <ul>
+            <li><strong>影院现场售票处：</strong>适合临时决定观影，可直接咨询当日场次与余票。</li>
+            <li><strong>影院自有渠道：</strong>部分影院提供会员卡、储值或专属优惠，规则以门店说明为准。</li>
+            <li><strong>第三方购票平台：</strong>场次信息集中，便于比价和查看座位图，注意平台服务条款。</li>
+            <li><strong>企业或团体购票：</strong>通常需提前联系影院，适用于包场、团建等活动。</li>
+          </ul>
+        </article>
+        <article class="buy-card">
+          <h3><span class="dot"></span>选座时的实用判断</h3>
+          <ul>
+            <li>座位图上的颜色一般代表可选、已售和预留，下单前刷新一次确认余票。</li>
+            <li>中间区域的中间排通常视角均衡，但也是最抢手的区域。</li>
+            <li>3D 影片建议适当靠后，减少仰头角度带来的疲劳感。</li>
+            <li>多人同行尽量一次选座，分开下单容易出现座位不连号。</li>
+            <li>确认订单前核对影片名、场次时间、影厅和人数，避免误购。</li>
+          </ul>
+        </article>
+        <article class="buy-card">
+          <h3><span class="dot"></span>取票与入场</h3>
+          <ul>
+            <li>自助取票机通常需输入取票码或扫描二维码，建议提前 15 分钟以上到场。</li>
+            <li>部分影院支持电子票直接扫码入场，具体以购票页面提示为准。</li>
+            <li>开场后入场请尽量轻声慢行，避免影响其他观众。</li>
+          </ul>
+        </article>
+        <article class="buy-card">
+          <h3><span class="dot"></span>退改与特殊情况</h3>
+          <ul>
+            <li>退票、改签是否支持以及手续费标准，由购票渠道在下单页面明确说明。</li>
+            <li>因影片撤档、场次调整等原因产生的票务问题，可联系渠道客服处理。</li>
+            <li>保留订单截图和支付记录，有助于提高问题处理效率。</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 服务与权益 -->
+  <section id="service">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="rule"></div>
+        <h2>影院常见服务与会员权益</h2>
+        <p>不同门店的服务配置存在差异，以下为影院场景中较常见的服务类型。</p>
+      </div>
+      <div class="service-grid">
+        <article class="service-card">
+          <h3>现场服务台</h3>
+          <p>可咨询场次、座位、失物招领、发票等问题，遇到取票异常时优先前往服务台处理。</p>
+        </article>
+        <article class="service-card">
+          <h3>卖品与休息区</h3>
+          <p>多数影院设有饮料、爆米花等卖品区，部分门店提供休息座椅和等候区域，适合提前到场的观众。</p>
+        </article>
+        <article class="service-card">
+          <h3>会员与储值</h3>
+          <p>会员通常可享受票价优惠、积分累计或专属场次，具体权益、有效期与使用范围以门店公布为准。</p>
+        </article>
+        <article class="service-card">
+          <h3>无障碍与便利设施</h3>
+          <p>部分门店设有无障碍通道、电梯与卫生间，行动不便的观众可提前致电门店确认路线。</p>
+        </article>
+        <article class="service-card">
+          <h3>停车与交通</h3>
+          <p>位于商业综合体内的影院通常可共用商场停车场，是否提供观影停车优惠需以门店和商场规定为准。</p>
+        </article>
+        <article class="service-card">
+          <h3>团体与包场</h3>
+          <p>企业观影、生日活动、影迷专场等需求，一般需提前与影院沟通时间、人数和场次安排。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 观影贴士 -->
+  <section class="tight">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="rule"></div>
+        <h2>提升观影体验的实用贴士</h2>
+        <p>这些细节不复杂，但能让整场观影更舒服。</p>
+      </div>
+      <div class="tips">
+        <div class="tips-grid">
+          <div class="tip">
+            <div class="ico">1</div>
+            <p><strong>提前到场：</strong>取票、买饮品、找影厅都需要时间，节假日和热门影片开场前排队更明显。</p>
+          </div>
+          <div class="tip">
+            <div class="ico">2</div>
+            <p><strong>手机静音：</strong>进入影厅后调至静音或飞行模式，屏幕亮度调低，避免影响他人。</p>
+          </div>
+          <div class="tip">
+            <div class="ico">3</div>
+            <p><strong>注意温度：</strong>影厅空调温度可能偏低，夏季观影可备一件薄外套。</p>
+          </div>
+          <div class="tip">
+            <div class="ico">4</div>
+            <p><strong>饮食适度：</strong>气味较重的食物容易影响周围观众，建议选择影院提供的常规卖品。</p>
+          </div>
+          <div class="tip">
+            <div class="ico">5</div>
+            <p><strong>照护儿童：</strong>带儿童观影前可先了解影片分级与时长，中途需要离场时尽量走靠走道座位。</p>
+          </div>
+          <div class="tip">
+            <div class="ico">6</div>
+            <p><strong>留意彩蛋：</strong>部分影片在片尾字幕结束后还有内容，如赶时间可提前查看影片信息再决定是否等待。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="rule"></div>
+        <h2>关于保利影院的常见问题</h2>
+        <p>以下回答基于影院观影的通用情况整理，具体规则请以门店和购票渠道公布为准。</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq" open>
+          <summary>怎么查保利影院当天的排片？</summary>
+          <div class="ans">可以通过购票平台按城市和门店筛选，查看当日场次列表；也可以直接前往门店售票处或致电门店咨询。排片会临时调整，出发前建议再确认一次目标场次是否正常放映。</div>
+        </details>
+        <details class="faq">
+          <summary>同一部电影为什么不同门店场次差别很大？</summary>
+          <div class="ans">排片与影片热度、门店影厅数量、上座率预期、档期安排等因素有关。影厅较多的门店场次更密集，热门影片在黄金时段也可能集中在少数影厅放映，因此不同门店的场次结构并不一致。</div>
+        </details>
+        <details class="faq">
+          <summary>网上买的票可以退或者改签吗？</summary>
+          <div class="ans">是否支持退改、是否收取手续费，由购票渠道和影院在下单页面约定。建议下单前仔细阅读退改说明，并保留订单信息。如遇影片撤档或场次变更，可联系购票渠道客服处理。</div>
+        </details>
+        <details class="faq">
+          <summary>3D 眼镜需要自己准备吗？</summary>
+          <div class="ans">多数影院会提供3D眼镜，可能免费借用、收取押金或单独售卖，不同门店做法不同。近视观众可询问是否提供夹片式眼镜，或自备合适的眼镜。</div>
+        </details>
+        <details class="faq">
+          <summary>儿童观影有什么需要注意的？</summary>
+          <div class="ans">不同影院对儿童票的身高或年龄标准规定不同，购票前可咨询门店。同时建议根据影片类型和时长判断孩子是否能安静看完，必要时选择靠走道的座位便于中途离场。</div>
+        </details>
+        <details class="faq">
+          <summary>影院停车方便吗？</summary>
+          <div class="ans">位于商业综合体内的影院一般可共用商场停车场，收费标准和是否有观影优惠以商场及门店规定为准。节假日车位紧张，建议预留更多时间或选择公共交通。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>关于本页</h4>
+        <p>本页为保利影院相关观影信息的整理与说明，围绕影讯查询、排片流程、影厅选择、购票选座和现场服务展开，帮助观众更高效地安排观影计划。</p>
+        <p>页面内容为通用性参考，不构成任何票价、场次或服务的承诺。</p>
+      </div>
+      <div>
+        <h4>观影前</h4>
+        <ul>
+          <li><a href="#notice">观影须知</a></li>
+          <li><a href="#flow">排片查询流程</a></li>
+          <li><a href="#hall">影厅类型说明</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>购票与现场</h4>
+        <ul>
+          <li><a href="#buy">购票渠道与选座</a></li>
+          <li><a href="#service">服务与会员权益</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>温馨提示</h4>
+        <ul>
+          <li>场次与票价以门店当日公布为准</li>
+          <li>退改规则以下单页面说明为准</li>
+          <li>遇到问题可联系门店服务台</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>保利影院 · 观影信息参考页</span>
+      <span>内容仅供观影参考，具体安排请以影院实际公布信息为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var links = document.querySelectorAll('nav.main-nav a');
+    links.forEach(function(link){
+      link.addEventListener('click', function(){
+        links.forEach(function(l){ l.classList.remove('active'); });
+        link.classList.add('active');
+      });
+    });
+  })();
+</script>
+
+</body>
+  </html>
