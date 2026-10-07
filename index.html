@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>快活影视-热门影视推荐与在线观看指南</title>
+<meta name="description" content="快活影视提供热门电影、电视剧、综艺、动漫与纪录片的观看指南，涵盖分类浏览、热播榜单、新片速递与选片建议，帮助观众快速找到想看的影视内容。">
+<meta name="keywords" content="快活影视,影视推荐,电影观看指南,电视剧推荐,热播榜单,在线观影">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:#0f1117;
+  color:#e8eaf0;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+ul{list-style:none}
+
+/* ---------- 顶部导航 ---------- */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(15,17,23,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #232733;
+}
+.header-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;gap:18px;
+}
+.logo{
+  display:flex;align-items:center;gap:9px;
+  font-size:21px;font-weight:800;letter-spacing:.5px;
+  white-space:nowrap;
+}
+.logo-mark{
+  width:34px;height:34px;border-radius:9px;
+  background:linear-gradient(135deg,#ff5f6d,#ff9966);
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;color:#fff;font-weight:900;
+}
+.logo span.hl{color:#ff7a59}
+.main-nav{display:flex;gap:6px;flex-wrap:wrap}
+.main-nav a{
+  padding:7px 13px;border-radius:20px;font-size:14.5px;color:#b6bccb;
+  transition:.22s;
+}
+.main-nav a:hover,.main-nav a.active{
+  background:#1e2330;color:#fff;
+}
+.header-cta{
+  padding:8px 18px;border-radius:22px;font-size:14px;font-weight:600;
+  background:linear-gradient(135deg,#ff5f6d,#ff9966);color:#fff;
+  white-space:nowrap;transition:.22s;
+}
+.header-cta:hover{opacity:.88;transform:translateY(-1px)}
+
+/* ---------- 首屏 ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 420px at 12% -10%,rgba(255,95,109,.22),transparent 62%),
+    radial-gradient(760px 420px at 92% 8%,rgba(90,120,255,.20),transparent 62%),
+    #0f1117;
+  border-bottom:1px solid #1d2129;
+}
+.hero-inner{
+  max-width:1200px;margin:0 auto;padding:64px 20px 58px;
+  display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;color:#ffb199;background:rgba(255,95,109,.12);
+  border:1px solid rgba(255,95,109,.3);
+  padding:5px 13px;border-radius:20px;margin-bottom:20px;
+}
+.hero h1{
+  font-size:40px;line-height:1.28;font-weight:800;letter-spacing:.5px;
+  margin-bottom:18px;
+}
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(135deg,#ff7a59,#ffb199);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p.lead{
+  font-size:16px;color:#a8b0c2;max-width:560px;margin-bottom:26px;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-block;padding:11px 24px;border-radius:26px;
+  font-size:15px;font-weight:600;transition:.22s;cursor:pointer;border:none;
+}
+.btn-primary{background:linear-gradient(135deg,#ff5f6d,#ff9966);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(255,95,109,.28)}
+.btn-ghost{background:#1b202b;color:#d5dae6;border:1px solid #2c3242}
+.btn-ghost:hover{background:#232a38;color:#fff}
+
+.hero-side{
+  background:linear-gradient(160deg,#181d28,#12161f);
+  border:1px solid #252b39;border-radius:18px;padding:24px;
+}
+.hero-side h3{
+  font-size:15px;color:#ffb199;margin-bottom:16px;font-weight:700;
+  display:flex;align-items:center;gap:8px;
+}
+.hero-side h3::before{
+  content:"";width:4px;height:15px;border-radius:2px;
+  background:linear-gradient(#ff5f6d,#ff9966);
+}
+.side-list li{
+  display:flex;justify-content:space-between;gap:14px;
+  padding:11px 0;border-bottom:1px dashed #262c3a;font-size:14.5px;
+}
+.side-list li:last-child{border-bottom:none}
+.side-list .name{color:#dfe4ee}
+.side-list .meta{color:#7f8798;font-size:13px;white-space:nowrap}
+
+/* ---------- 通用区块 ---------- */
+.section{max-width:1200px;margin:0 auto;padding:56px 20px}
+.section-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:16px;margin-bottom:28px;flex-wrap:wrap;
+}
+.section-head h2{
+  font-size:24px;font-weight:800;letter-spacing:.5px;
+  display:flex;align-items:center;gap:11px;
+}
+.section-head h2::before{
+  content:"";width:5px;height:22px;border-radius:3px;
+  background:linear-gradient(#ff5f6d,#ff9966);
+}
+.section-head .sub{font-size:14px;color:#7f8798;max-width:560px}
+.section-head .more{
+  font-size:14px;color:#ffb199;border:1px solid #333a4a;
+  padding:6px 15px;border-radius:18px;transition:.22s;
+}
+.section-head .more:hover{background:#1e2330;border-color:#4a5265}
+
+/* ---------- 分类浏览 ---------- */
+.cat-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px;
+}
+.cat-card{
+  background:#171c26;border:1px solid #242a38;border-radius:14px;
+  padding:20px 18px;transition:.24s;
+}
+.cat-card:hover{
+  transform:translateY(-4px);border-color:#3b4356;
+  background:#1c2230;
+}
+.cat-card .ico{
+  width:38px;height:38px;border-radius:10px;margin-bottom:13px;
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+  background:rgba(255,95,109,.13);color:#ff8f7a;
+}
+.cat-card h3{font-size:16px;margin-bottom:6px;font-weight:700}
+.cat-card p{font-size:13px;color:#8b93a5;line-height:1.6}
+
+/* ---------- 影片卡片 ---------- */
+.movie-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:20px;
+}
+.movie-card{
+  background:#171c26;border:1px solid #242a38;border-radius:14px;
+  overflow:hidden;transition:.24s;display:flex;flex-direction:column;
+}
+.movie-card:hover{transform:translateY(-5px);border-color:#3d4557;box-shadow:0 14px 30px rgba(0,0,0,.4)}
+.poster{
+  height:132px;position:relative;
+  display:flex;align-items:flex-end;padding:12px;
+  font-size:13px;font-weight:700;color:#fff;
+}
+.poster::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.62));
+}
+.poster span{position:relative;z-index:2}
+.p1{background:linear-gradient(135deg,#3b2a6b,#7a4bd6)}
+.p2{background:linear-gradient(135deg,#1f4d5c,#2f9ea8)}
+.p3{background:linear-gradient(135deg,#6b2f3a,#d15a6b)}
+.p4{background:linear-gradient(135deg,#2c3f6b,#4f7ad1)}
+.p5{background:linear-gradient(135deg,#5c4a1f,#c79a3a)}
+.p6{background:linear-gradient(135deg,#2f5d3a,#57a86e)}
+.movie-body{padding:15px 16px 17px;display:flex;flex-direction:column;gap:8px;flex:1}
+.movie-body h3{font-size:15.5px;font-weight:700;line-height:1.45}
+.movie-body .desc{font-size:13px;color:#8b93a5;flex:1}
+.tags{display:flex;gap:7px;flex-wrap:wrap}
+.tag{
+  font-size:12px;color:#9aa3b6;background:#1f2532;
+  padding:3px 9px;border-radius:12px;border:1px solid #2b3242;
+}
+.tag.hot{color:#ffb199;background:rgba(255,95,109,.12);border-color:rgba(255,95,109,.28)}
+
+/* ---------- 榜单 ---------- */
+.rank-wrap{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;
+}
+.rank-panel{
+  background:#171c26;border:1px solid #242a38;border-radius:16px;padding:22px;
+}
+.rank-panel h3{
+  font-size:17px;margin-bottom:16px;font-weight:700;
+  display:flex;align-items:center;gap:9px;
+}
+.rank-panel h3 .dot{
+  width:8px;height:8px;border-radius:50%;
+  background:linear-gradient(135deg,#ff5f6d,#ff9966);
+}
+.rank-item{
+  display:flex;align-items:center;gap:13px;
+  padding:11px 0;border-bottom:1px solid #212734;
+}
+.rank-item:last-child{border-bottom:none}
+.rank-no{
+  width:24px;height:24px;border-radius:7px;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12.5px;font-weight:800;color:#8b93a5;background:#212734;
+}
+.rank-item:nth-child(1) .rank-no{background:linear-gradient(135deg,#ff5f6d,#ff9966);color:#fff}
+.rank-item:nth-child(2) .rank-no{background:#4a5468;color:#fff}
+.rank-item:nth-child(3) .rank-no{background:#6b5a44;color:#fff}
+.rank-item .info{flex:1;min-width:0}
+.rank-item .info strong{display:block;font-size:14.5px;font-weight:600;color:#e4e8f0}
+.rank-item .info small{font-size:12.5px;color:#7f8798}
+.rank-item .score{font-size:14px;font-weight:800;color:#ffb199}
+
+/* ---------- 指南正文 ---------- */
+.guide{
+  max-width:1200px;margin:0 auto;padding:8px 20px 56px;
+}
+.guide-grid{
+  display:grid;grid-template-columns:1fr 320px;gap:34px;align-items:start;
+}
+.article-box{
+  background:#151a23;border:1px solid #232936;border-radius:16px;
+  padding:30px 30px 34px;
+}
+.article-box h2{
+  font-size:22px;font-weight:800;margin-bottom:16px;
+  display:flex;align-items:center;gap:10px;
+}
+.article-box h2::before{
+  content:"";width:5px;height:20px;border-radius:3px;
+  background:linear-gradient(#ff5f6d,#ff9966);
+}
+.article-box h3{font-size:17px;font-weight:700;margin:24px 0 10px;color:#ffb199}
+.article-box p{font-size:15px;color:#aeb6c6;margin-bottom:12px}
+.article-box ul.plain{margin:6px 0 14px}
+.article-box ul.plain li{
+  font-size:15px;color:#aeb6c6;padding-left:20px;position:relative;margin-bottom:8px;
+}
+.article-box ul.plain li::before{
+  content:"";position:absolute;left:4px;top:11px;
+  width:6px;height:6px;border-radius:50%;background:#ff8f7a;
+}
+
+/* ---------- 侧栏 ---------- */
+.sidebar{display:flex;flex-direction:column;gap:20px}
+.side-box{
+  background:#171c26;border:1px solid #242a38;border-radius:16px;padding:22px;
+}
+.side-box h3{
+  font-size:16px;font-weight:700;margin-bottom:14px;
+  display:flex;align-items:center;gap:9px;
+}
+.side-box h3::before{
+  content:"";width:4px;height:15px;border-radius:2px;
+  background:linear-gradient(#ff5f6d,#ff9966);
+}
+.side-box p{font-size:14px;color:#98a1b3}
+.side-box ul li{
+  font-size:14px;color:#a8b0c2;padding:9px 0;border-bottom:1px dashed #262c3a;
+}
+.side-box ul li:last-child{border-bottom:none}
+.side-box ul li a:hover{color:#ffb199}
+.tips li{display:flex;gap:9px;align-items:flex-start}
+.tips li .num{
+  flex:0 0 auto;width:20px;height:20px;border-radius:6px;margin-top:2px;
+  background:rgba(255,95,109,.14);color:#ff8f7a;
+  font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;
+}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:1200px;margin:0 auto;padding:0 20px 60px}
+.faq h2{
+  font-size:24px;font-weight:800;margin-bottom:24px;
+  display:flex;align-items:center;gap:11px;
+}
+.faq h2::before{
+  content:"";width:5px;height:22px;border-radius:3px;
+  background:linear-gradient(#ff5f6d,#ff9966);
+}
+.faq-list{display:grid;gap:14px}
+.faq-item{
+  background:#171c26;border:1px solid #242a38;border-radius:14px;
+  padding:20px 22px;transition:.22s;
+}
+.faq-item:hover{border-color:#3b4356}
+.faq-item h3{
+  font-size:16px;font-weight:700;margin-bottom:9px;color:#e8eaf0;
+  display:flex;gap:10px;align-items:flex-start;
+}
+.faq-item h3 .q{
+  flex:0 0 auto;color:#ff8f7a;font-weight:900;
+}
+.faq-item p{font-size:14.5px;color:#98a1b3}
+
+/* ---------- 页脚 ---------- */
+.site-footer{
+  background:#0b0d13;border-top:1px solid #1d2129;
+  padding:44px 20px 26px;
+}
+.footer-inner{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;
+}
+.footer-brand .logo{margin-bottom:14px}
+.footer-brand p{font-size:13.5px;color:#7f8798;max-width:340px}
+.footer-col h4{font-size:14.5px;font-weight:700;margin-bottom:14px;color:#d5dae6}
+.footer-col ul li{margin-bottom:9px}
+.footer-col ul li a{font-size:13.5px;color:#7f8798;transition:.2s}
+.footer-col ul li a:hover{color:#ffb199}
+.copyright{
+  max-width:1200px;margin:34px auto 0;padding-top:20px;
+  border-top:1px solid #1d2129;
+  font-size:13px;color:#5f6675;text-align:center;line-height:1.8;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:32px;padding:48px 20px 44px}
+  .hero h1{font-size:32px}
+  .guide-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media (max-width:680px){
+  .header-inner{flex-wrap:wrap;gap:12px;padding:12px 16px}
+  .main-nav{order:3;width:100%;overflow-x:auto;padding-bottom:4px}
+  .main-nav a{white-space:nowrap}
+  .hero h1{font-size:26px}
+  .hero p.lead{font-size:15px}
+  .section{padding:40px 16px}
+  .section-head h2{font-size:20px}
+  .movie-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+  .cat-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+  .article-box{padding:22px 18px 26px}
+  .footer-inner{grid-template-columns:1fr;gap:26px}
+  .faq{padding:0 16px 48px}
+  .guide{padding:8px 16px 44px}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">快</span>
+      快活<span class="hl">影视</span>
+    </a>
+    <nav class="main-nav">
+      <a href="#category" class="active">分类浏览</a>
+      <a href="#hot">热播推荐</a>
+      <a href="#rank">人气榜单</a>
+      <a href="#guide">观影指南</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <a href="#hot" class="header-cta">看看今天看什么</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <span class="hero-tag">🎬 找片不纠结 · 选剧有方向</span>
+        <h1>快活影视：<em>把想看的片子，一次找对</em></h1>
+        <p class="lead">
+          面对海量片单不知道从哪下手？快活影视按电影、电视剧、综艺、动漫、纪录片等类型整理内容，
+          提供热播推荐、人气榜单和选片建议，帮你在几分钟内锁定今晚要看的那一部。
+        </p>
+        <div class="hero-actions">
+          <a href="#hot" class="btn btn-primary">浏览热播内容</a>
+          <a href="#guide" class="btn btn-ghost">查看选片指南</a>
+        </div>
+      </div>
+
+      <aside class="hero-side">
+        <h3>今日值得留意</h3>
+        <ul class="side-list">
+          <li><span class="name">剧情长片 · 口碑向</span><span class="meta">适合安静看完</span></li>
+          <li><span class="name">轻松喜剧 · 下饭向</span><span class="meta">节奏轻快</span></li>
+          <li><span class="name">悬疑推理 · 烧脑向</span><span class="meta">需专注观看</span></li>
+          <li><span class="name">家庭动画 · 合家欢</span><span class="meta">老少皆宜</span></li>
+          <li><span class="name">自然纪录片 · 放松向</span><span class="meta">画面舒缓</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 分类浏览 -->
+  <section class="section" id="category">
+    <div class="section-head">
+      <div>
+        <h2>分类浏览</h2>
+        <p class="sub">按内容形态和观看场景划分，先确定类型，再挑具体作品，比盲目翻列表效率更高。</p>
+      </div>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="ico">🎞️</div>
+        <h3>电影</h3>
+        <p>剧情、喜剧、动作、科幻、爱情等院线与网络长片，适合一次看完的完整叙事。</p>
+      </div>
+      <div class="cat-card">
+        <div class="ico">📺</div>
+        <h3>电视剧</h3>
+        <p>国产剧、港台剧、日韩剧与欧美剧，按集追看，适合长期陪伴式观看。</p>
+      </div>
+      <div class="cat-card">
+        <div class="ico">🎤</div>
+        <h3>综艺</h3>
+        <p>真人秀、竞技、访谈、生活观察类节目，节奏轻松，适合碎片时间。</p>
+      </div>
+      <div class="cat-card">
+        <div class="ico">🌸</div>
+        <h3>动漫</h3>
+        <p>国漫、日番、剧场版与短篇动画，题材跨度大，从热血到治愈都有覆盖。</p>
+      </div>
+      <div class="cat-card">
+        <div class="ico">🌍</div>
+        <h3>纪录片</h3>
+        <p>自然、历史、人文、科技等题材，信息密度高，适合想边看边了解的观众。</p>
+      </div>
+      <div class="cat-card">
+        <div class="ico">🎭</div>
+        <h3>舞台与曲艺</h3>
+        <p>话剧、戏曲、相声与音乐现场，保留舞台质感，适合喜欢现场氛围的观众。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 热播推荐 -->
+  <section class="section" id="hot">
+    <div class="section-head">
+      <div>
+        <h2>热播推荐</h2>
+        <p class="sub">以下为按题材与观看场景整理的内容方向示例，具体片单请以实际可观看平台的上线情况为准。</p>
+      </div>
+      <a href="#rank" class="more">查看完整榜单</a>
+    </div>
+    <div class="movie-grid">
+
+      <article class="movie-card">
+        <div class="poster p1"><span>剧情 · 长片</span></div>
+        <div class="movie-body">
+          <h3>沉静叙事类影片</h3>
+          <p class="desc">节奏偏慢、情绪细腻，适合一个人安静看完，看完之后往往会想再回味一遍。</p>
+          <div class="tags"><span class="tag hot">口碑向</span><span class="tag">适合独看</span></div>
+        </div>
+      </article>
+
+      <article class="movie-card">
+        <div class="poster p2"><span>悬疑 · 推理</span></div>
+        <div class="movie-body">
+          <h3>烧脑悬疑类作品</h3>
+          <p class="desc">线索层层递进，需要集中注意力，中途刷手机会错过关键信息。</p>
+          <div class="tags"><span class="tag hot">高专注</span><span class="tag">推理迷</span></div>
+        </div>
+      </article>
+
+      <article class="movie-card">
+        <div class="poster p3"><span>喜剧 · 下饭</span></div>
+        <div class="movie-body">
+          <h3>轻松解压类剧集</h3>
+          <p class="desc">单集时长友好，情节不烧脑，适合吃饭或睡前放松时观看。</p>
+          <div class="tags"><span class="tag hot">下饭剧</span><span class="tag">低门槛</span></div>
+        </div>
+      </article>
+
+      <article class="movie-card">
+        <div class="poster p4"><span>科幻 · 想象</span></div>
+        <div class="movie-body">
+          <h3>科幻与未来题材</h3>
+          <p class="desc">世界观设定完整，视觉与概念并重，适合喜欢思考的观众。</p>
+          <div class="tags"><span class="tag">设定向</span><span class="tag">视效</span></div>
+        </div>
+      </article>
+
+      <article class="movie-card">
+        <div class="poster p5"><span>纪录 · 人文</span></div>
+        <div class="movie-body">
+          <h3>人文历史纪录片</h3>
+          <p class="desc">以真实素材为主，信息量扎实，适合想边看边了解点东西的时候。</p>
+          <div class="tags"><span class="tag">涨知识</span><span class="tag">真实素材</span></div>
+        </div>
+      </article>
+
+      <article class="movie-card">
+        <div class="poster p6"><span>动画 · 治愈</span></div>
+        <div class="movie-body">
+          <h3>治愈系动画作品</h3>
+          <p class="desc">画面温和、情绪平稳，适合压力大或者心情低落时观看。</p>
+          <div class="tags"><span class="tag hot">治愈</span><span class="tag">合家欢</span></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 榜单 -->
+  <section class="section" id="rank">
+    <div class="section-head">
+      <div>
+        <h2>人气榜单</h2>
+        <p class="sub">榜单反映的是观众的关注倾向和讨论热度，可以作为选片参考，但不必完全照着看。</p>
+      </div>
+    </div>
+    <div class="rank-wrap">
+
+      <div class="rank-panel">
+        <h3><span class="dot"></span>电影关注方向</h3>
+        <ul>
+          <li class="rank-item"><span class="rank-no">1</span><span class="info"><strong>现实主义剧情片</strong><small>贴近生活，共鸣感强</small></span><span class="score">↑</span></li>
+          <li class="rank-item"><span class="rank-no">2</span><span class="info"><strong>悬疑推理片</strong><small>反转与线索并重</small></span><span class="score">↑</span></li>
+          <li class="rank-item"><span class="rank-no">3</span><span class="info"><strong>科幻视效大片</strong><small>影院体验优先</small></span><span class="score">→</span></li>
+          <li class="rank-item"><span class="rank-no">4</span><span class="info"><strong>温情家庭题材</strong><small>适合全家一起看</small></span><span class="score">→</span></li>
+          <li class="rank-item"><span class="rank-no">5</span><span class="info"><strong>喜剧解压片</strong><small>节奏轻快无负担</small></span><span class="score">↑</span></li>
+        </ul>
+      </div>
+
+      <div class="rank-panel">
+        <h3><span class="dot"></span>剧集关注方向</h3>
+        <ul>
+          <li class="rank-item"><span class="rank-no">1</span><span class="info"><strong>都市生活剧</strong><small>话题贴近日常</small></span><span class="score">↑</span></li>
+          <li class="rank-item"><span class="rank-no">2</span><span class="info"><strong>古装与年代剧</strong><small>服化道与群像戏</small></span><span class="score">→</span></li>
+          <li class="rank-item"><span class="rank-no">3</span><span class="info"><strong>刑侦悬疑剧</strong><small>案件推进节奏强</small></span><span class="score">↑</span></li>
+          <li class="rank-item"><span class="rank-no">4</span><span class="info"><strong>职场行业剧</strong><small>专业背景设定</small></span><span class="score">→</span></li>
+          <li class="rank-item"><span class="rank-no">5</span><span class="info"><strong>轻喜剧短剧</strong><small>单集时长短</small></span><span class="score">↑</span></li>
+        </ul>
+      </div>
+
+      <div class="rank-panel">
+        <h3><span class="dot"></span>综艺与纪录片方向</h3>
+        <ul>
+          <li class="rank-item"><span class="rank-no">1</span><span class="info"><strong>生活观察类综艺</strong><small>真实、松弛</small></span><span class="score">↑</span></li>
+          <li class="rank-item"><span class="rank-no">2</span><span class="info"><strong>竞技挑战类综艺</strong><small>节奏紧张</small></span><span class="score">→</span></li>
+          <li class="rank-item"><span class="rank-no">3</span><span class="info"><strong>自然生态纪录片</strong><small>画面治愈</small></span><span class="score">↑</span></li>
+          <li class="rank-item"><span class="rank-no">4</span><span class="info"><strong>历史人文纪录片</strong><small>知识密度高</small></span><span class="score">→</span></li>
+          <li class="rank-item"><span class="rank-no">5</span><span class="info"><strong>美食类节目</strong><small>轻松下饭</small></span><span class="score">↑</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 观影指南 -->
+  <section class="guide" id="guide">
+    <div class="guide-grid">
+
+      <div class="article-box">
+        <h2>怎么在快活影视里快速找到想看的片</h2>
+        <p>
+          影视内容越来越多，真正让人头疼的不是“没得看”，而是“不知道看什么”。打开任何一个平台，
+          首页推荐往往按热度排序，但热度高不等于适合你。快活影视的整理思路，是先把需求说清楚，
+          再去对应类型里找，而不是一上来就翻列表。
+        </p>
+
+        <h3>第一步：先确定今晚的观看状态</h3>
+        <p>
+          同样是看电影，下班后疲惫地窝在沙发上，和周末下午精神饱满地坐在电脑前，是两种完全不同的状态。
+          前者更适合节奏轻松、单集时长短、不需要记线索的内容；后者才适合悬疑、科幻这类需要动脑的题材。
+          先判断自己的状态，能排除掉一大半不合适的选项。
+        </p>
+
+        <h3>第二步：按类型缩小范围</h3>
+        <p>
+          确定状态之后，再进入对应的分类。电影适合一次看完的完整叙事，剧集适合愿意长期投入的观众，
+          综艺和纪录片则更适合碎片时间。分类不是为了限制选择，而是为了减少无效浏览。
+        </p>
+
+        <h3>第三步：参考榜单，但别被榜单绑住</h3>
+        <p>
+          人气榜单反映的是大众关注度，能帮你快速了解近期讨论较多的方向。但每个人的口味差异很大，
+          榜单靠前的作品未必适合你。更实用的做法是：把榜单当作候选池，再结合题材、时长和口碑描述做二次筛选。
+        </p>
+
+        <h3>第四步：看简介和标签，而不是只看标题</h3>
+        <p>
+          标题往往只提供很少的信息，真正决定要不要看的是题材标签和内容简介。留意以下几点：
+        </p>
+        <ul class="plain">
+          <li>题材标签是否符合你当前的观看偏好；</li>
+          <li>简介里描述的核心冲突是否让你产生兴趣；</li>
+          <li>时长或集数是否和你能投入的时间匹配；</li>
+          <li>内容基调是轻松、沉重还是中性，是否和你此刻的心情相符。</li>
+        </ul>
+
+        <h3>第五步：建立自己的片单习惯</h3>
+        <p>
+          遇到感兴趣但当下没时间看的内容，先记下来，形成自己的待看清单。这样下次打开时就不用从零开始找，
+          直接按清单顺序看即可。长期坚持下来，你会发现自己的口味偏好越来越清晰，选片速度也会明显变快。
+        </p>
+
+        <h3>关于观看体验的几点提醒</h3>
+        <p>
+          无论通过哪个平台观看，都建议优先选择正规、合规的渠道，注意账号与支付安全，
+          不随意点击来源不明的链接，也不要在非官方页面填写个人信息。
+          合理安排观看时间，避免长时间连续追剧影响作息，是比“看完多少部”更重要的事。
+        </p>
+      </div>
+
+      <aside class="sidebar">
+        <div class="side-box">
+          <h3>选片小技巧</h3>
+          <ul class="tips">
+            <li><span class="num">1</span><span>先定状态，再定类型，最后才挑具体作品。</span></li>
+            <li><span class="num">2</span><span>疲惫时避开烧脑题材，轻松内容更合适。</span></li>
+            <li><span class="num">3</span><span>用标签和简介筛选，比只看标题靠谱。</span></li>
+            <li><span class="num">4</span><span>把想看的记进片单，减少重复挑选时间。</span></li>
+          </ul>
+        </div>
+
+        <div class="side-box">
+          <h3>常见题材速览</h3>
+          <ul>
+            <li><a href="#hot">剧情 / 现实主义</a></li>
+            <li><a href="#hot">悬疑 / 推理</a></li>
+            <li><a href="#hot">喜剧 / 解压</a></li>
+            <li><a href="#hot">科幻 / 未来</a></li>
+            <li><a href="#hot">动画 / 治愈</a></li>
+            <li><a href="#hot">纪录 / 人文自然</a></li>
+          </ul>
+        </div>
+
+        <div class="side-box">
+          <h3>观看安全提示</h3>
+          <p>
+            请通过正规、合规的渠道观看影视内容，注意保护个人账号与支付信息，
+            不点击来源不明的链接，不在非官方页面填写敏感信息。
+          </p>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <h2>常见问题</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <h3><span class="q">Q</span>快活影视是一个可以直接播放影片的平台吗？</h3>
+        <p>
+          快活影视主要提供影视内容的分类整理、热播方向推荐和选片指南，帮助观众更快地确定想看什么。
+          具体影片的播放渠道和上线情况，请以正规视频平台的实际情况为准。
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3><span class="q">Q</span>不知道该看什么的时候，应该从哪里开始？</h3>
+        <p>
+          建议先从观看状态入手：是想要轻松放松，还是愿意投入注意力。确定状态后进入对应分类，
+          再结合标签和简介缩小范围，通常几分钟内就能锁定几个候选。
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3><span class="q">Q</span>榜单排名靠前的作品一定更好看吗？</h3>
+        <p>
+          不一定。榜单反映的是关注度和讨论热度，属于大众倾向，而观看体验因人而异。
+          把榜单当作候选参考，再结合自己的题材偏好来判断，会更合适。
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3><span class="q">Q</span>怎样避免追剧占用太多时间？</h3>
+        <p>
+          可以在开始前设定一个大致的时间上限，或者优先选择单集时长较短的内容。
+          把观看当作放松方式而不是任务，按自己的节奏来就好。
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3><span class="q">Q</span>观看影视内容时需要注意什么？</h3>
+        <p>
+          优先选择正规、合规的观看渠道，注意账号和支付安全，不点击来源不明的链接，
+          不在非官方页面填写个人信息，同时注意合理安排作息。
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">
+        <span class="logo-mark">快</span>
+        快活<span class="hl">影视</span>
+      </div>
+      <p>
+        快活影视专注于影视内容的分类整理与选片参考，涵盖电影、剧集、综艺、动漫与纪录片等方向，
+        帮助观众用更少的时间找到更合适的内容。
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h4>内容分类</h4>
+      <ul>
+        <li><a href="#category">电影</a></li>
+        <li><a href="#category">电视剧</a></li>
+        <li><a href="#category">综艺</a></li>
+        <li><a href="#category">动漫</a></li>
+        <li><a href="#category">纪录片</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>快速导航</h4>
+      <ul>
+        <li><a href="#hot">热播推荐</a></li>
+        <li><a href="#rank">人气榜单</a></li>
+        <li><a href="#guide">观影指南</a></li>
+        <li><a href="#faq">常见问题</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="copyright">
+    <p>本站内容为影视分类整理与观看参考信息，具体影片播放渠道请以正规平台实际情况为准。</p>
+    <p>© 2024 快活影视 · 请通过合规渠道观看影视内容，注意保护个人信息与账号安全。</p>
+  </div>
+</footer>
+
+</body>
+          </html>
