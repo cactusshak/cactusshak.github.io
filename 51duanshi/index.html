@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>51短视频-短视频内容浏览与创作入门指南</title>
+<meta name="description" content="51短视频相关内容浏览与创作入门指南，介绍短视频常见分类、观看方式、拍摄剪辑方法、发布注意事项与常见问题，帮助新手快速了解短视频平台的基本用法。">
+<meta name="keywords" content="51短视频,短视频,短视频平台,短视频创作,短视频拍摄,短视频剪辑,短视频入门">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+  :root{
+    --bg:#0d0f14;
+    --bg-soft:#151922;
+    --card:#1b202b;
+    --card-hover:#222937;
+    --line:#2a3140;
+    --text:#eef1f6;
+    --text-dim:#a4adbe;
+    --text-mute:#7b8496;
+    --accent:#ff3d6e;
+    --accent-2:#ffb02e;
+    --accent-soft:rgba(255,61,110,.12);
+    --radius:14px;
+    --radius-sm:9px;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Helvetica Neue",Arial,sans-serif;
+    line-height:1.7;
+    font-size:15px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  ul,ol{list-style:none;}
+
+  .wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 20px;}
+
+  /* ===== 顶部导航 ===== */
+  .site-header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(13,15,20,.88);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    height:64px;gap:18px;
+  }
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.5px;}
+  .logo-mark{
+    width:34px;height:34px;border-radius:10px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;font-weight:900;color:#fff;
+    box-shadow:0 4px 14px rgba(255,61,110,.4);
+  }
+  .logo span.hl{color:var(--accent);}
+  .main-nav{display:flex;align-items:center;gap:4px;}
+  .main-nav a{
+    padding:8px 14px;border-radius:8px;font-size:14.5px;color:var(--text-dim);
+    transition:.2s;
+  }
+  .main-nav a:hover,.main-nav a.active{color:#fff;background:var(--card);}
+  .header-cta{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:9px 18px;border-radius:999px;font-size:14px;font-weight:600;
+    background:linear-gradient(135deg,var(--accent),#ff6b3d);color:#fff;
+    box-shadow:0 6px 18px rgba(255,61,110,.32);
+    transition:.2s;white-space:nowrap;
+  }
+  .header-cta:hover{transform:translateY(-1px);box-shadow:0 9px 24px rgba(255,61,110,.45);}
+  .nav-toggle{
+    display:none;background:none;border:1px solid var(--line);color:var(--text);
+    width:40px;height:40px;border-radius:9px;font-size:19px;cursor:pointer;
+  }
+
+  /* ===== 首屏 ===== */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:64px 0 56px;
+    background:
+      radial-gradient(900px 420px at 78% -10%,rgba(255,61,110,.20),transparent 65%),
+      radial-gradient(700px 380px at 10% 110%,rgba(255,176,46,.13),transparent 70%),
+      var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.25fr .95fr;gap:44px;align-items:center;
+  }
+  .hero-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;color:var(--accent-2);
+    background:rgba(255,176,46,.1);border:1px solid rgba(255,176,46,.28);
+    padding:5px 13px;border-radius:999px;margin-bottom:20px;
+  }
+  .hero-tag i{width:6px;height:6px;border-radius:50%;background:var(--accent-2);display:block;}
+  .hero h1{
+    font-size:40px;line-height:1.28;font-weight:800;letter-spacing:-.5px;
+    margin-bottom:18px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(120deg,var(--accent),var(--accent-2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lead{
+    color:var(--text-dim);font-size:16px;max-width:600px;margin-bottom:26px;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:30px;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:7px;
+    padding:12px 26px;border-radius:10px;font-size:15px;font-weight:600;
+    cursor:pointer;border:none;transition:.22s;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--accent),#ff6b3d);color:#fff;
+    box-shadow:0 8px 22px rgba(255,61,110,.35);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(255,61,110,.5);}
+  .btn-ghost{
+    background:var(--card);color:var(--text);border:1px solid var(--line);
+  }
+  .btn-ghost:hover{background:var(--card-hover);border-color:#3a4356;}
+  .hero-stats{display:flex;gap:34px;flex-wrap:wrap;}
+  .hero-stats div strong{display:block;font-size:21px;font-weight:800;color:#fff;}
+  .hero-stats div span{font-size:13px;color:var(--text-mute);}
+
+  .hero-panel{
+    background:linear-gradient(160deg,var(--card),#141821);
+    border:1px solid var(--line);border-radius:20px;
+    padding:22px;box-shadow:var(--shadow);
+  }
+  .panel-head{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-bottom:14px;margin-bottom:14px;border-bottom:1px dashed var(--line);
+  }
+  .panel-head h3{font-size:15.5px;font-weight:700;}
+  .panel-head span{font-size:12.5px;color:var(--text-mute);}
+  .shot-list{display:flex;flex-direction:column;gap:11px;}
+  .shot-item{
+    display:flex;gap:13px;align-items:center;
+    padding:10px;border-radius:var(--radius-sm);
+    background:rgba(255,255,255,.02);border:1px solid transparent;
+    transition:.2s;
+  }
+  .shot-item:hover{background:var(--card-hover);border-color:var(--line);}
+  .shot-thumb{
+    width:58px;height:58px;border-radius:10px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    font-size:19px;font-weight:800;color:#fff;
+  }
+  .t1{background:linear-gradient(135deg,#ff3d6e,#ff8a3d);}
+  .t2{background:linear-gradient(135deg,#3d8bff,#5ce1e6);}
+  .t3{background:linear-gradient(135deg,#9b5cff,#ff5cc8);}
+  .t4{background:linear-gradient(135deg,#2ecc71,#a3e635);}
+  .shot-info{min-width:0;flex:1;}
+  .shot-info strong{display:block;font-size:14px;font-weight:600;margin-bottom:2px;}
+  .shot-info span{font-size:12.5px;color:var(--text-mute);display:block;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .shot-badge{
+    font-size:11.5px;padding:3px 9px;border-radius:999px;
+    background:var(--accent-soft);color:var(--accent);font-weight:600;white-space:nowrap;
+  }
+
+  /* ===== 通用区块 ===== */
+  section{padding:58px 0;}
+  .sec-head{margin-bottom:32px;}
+  .sec-head .kicker{
+    font-size:13px;font-weight:700;letter-spacing:2px;color:var(--accent);
+    text-transform:uppercase;margin-bottom:8px;
+  }
+  .sec-head h2{font-size:27px;font-weight:800;letter-spacing:-.3px;margin-bottom:10px;}
+  .sec-head p{color:var(--text-dim);max-width:760px;font-size:15px;}
+
+  /* ===== 分类 ===== */
+  .cat-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+  }
+  .cat-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 20px;transition:.24s;position:relative;overflow:hidden;
+  }
+  .cat-card::after{
+    content:"";position:absolute;inset:auto -30% -60% auto;width:130px;height:130px;
+    border-radius:50%;background:radial-gradient(circle,rgba(255,61,110,.18),transparent 70%);
+    opacity:0;transition:.3s;
+  }
+  .cat-card:hover{transform:translateY(-4px);border-color:#3b4457;background:var(--card-hover);}
+  .cat-card:hover::after{opacity:1;}
+  .cat-icon{
+    width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    font-size:20px;margin-bottom:14px;background:var(--accent-soft);
+  }
+  .cat-card h3{font-size:16.5px;font-weight:700;margin-bottom:8px;}
+  .cat-card p{font-size:13.5px;color:var(--text-dim);}
+
+  /* ===== 内容浏览区（双栏） ===== */
+  .browse-layout{
+    display:grid;grid-template-columns:1.55fr 1fr;gap:26px;align-items:start;
+  }
+  .feature-list{display:flex;flex-direction:column;gap:16px;}
+  .feature-card{
+    display:grid;grid-template-columns:132px 1fr;gap:18px;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:16px;transition:.24s;
+  }
+  .feature-card:hover{border-color:#3b4457;background:var(--card-hover);}
+  .feature-cover{
+    border-radius:var(--radius-sm);height:96px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:26px;font-weight:900;color:#fff;
+  }
+  .feature-body h3{font-size:16.5px;font-weight:700;margin-bottom:7px;}
+  .feature-body p{font-size:13.6px;color:var(--text-dim);margin-bottom:10px;}
+  .meta-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .meta-row span{
+    font-size:12px;color:var(--text-mute);background:rgba(255,255,255,.04);
+    padding:3px 10px;border-radius:999px;
+  }
+
+  .side-box{
+    background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px;margin-bottom:20px;
+  }
+  .side-box h3{
+    font-size:16px;font-weight:700;margin-bottom:14px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .side-box h3::before{
+    content:"";width:4px;height:16px;border-radius:2px;
+    background:linear-gradient(var(--accent),var(--accent-2));
+  }
+  .rank-list li{
+    display:flex;gap:12px;align-items:center;padding:9px 0;
+    border-bottom:1px dashed var(--line);font-size:14px;
+  }
+  .rank-list li:last-child{border-bottom:none;}
+  .rank-num{
+    width:22px;height:22px;flex-shrink:0;border-radius:6px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:12px;font-weight:800;background:rgba(255,255,255,.07);color:var(--text-dim);
+  }
+  .rank-list li:nth-child(1) .rank-num{background:linear-gradient(135deg,#ff3d6e,#ff8a3d);color:#fff;}
+  .rank-list li:nth-child(2) .rank-num{background:linear-gradient(135deg,#ffb02e,#ffd66b);color:#3a2a00;}
+  .rank-list li:nth-child(3) .rank-num{background:linear-gradient(135deg,#3d8bff,#5ce1e6);color:#fff;}
+  .rank-list li span.rt{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text);}
+  .rank-list li em{font-style:normal;font-size:12px;color:var(--text-mute);}
+
+  .tip-list li{
+    position:relative;padding-left:18px;font-size:13.6px;color:var(--text-dim);
+    margin-bottom:10px;
+  }
+  .tip-list li::before{
+    content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;
+    background:var(--accent-2);
+  }
+
+  /* ===== 创作步骤 ===== */
+  .steps{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  }
+  .step-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px 20px;position:relative;
+  }
+  .step-num{
+    font-size:34px;font-weight:900;line-height:1;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    margin-bottom:12px;display:block;
+  }
+  .step-card h3{font-size:16px;font-weight:700;margin-bottom:8px;}
+  .step-card p{font-size:13.5px;color:var(--text-dim);}
+
+  /* ===== 指南正文 ===== */
+  .guide-section{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+  .guide-article{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;
+  }
+  .guide-article h3{
+    font-size:18px;font-weight:700;margin-bottom:14px;
+    padding-bottom:12px;border-bottom:1px solid var(--line);
+  }
+  .guide-article p{font-size:14.2px;color:var(--text-dim);margin-bottom:12px;}
+  .guide-article p:last-child{margin-bottom:0;}
+  .guide-article strong{color:var(--text);font-weight:600;}
+
+  /* ===== FAQ ===== */
+  .faq-list{display:flex;flex-direction:column;gap:12px;max-width:920px;}
+  .faq-item{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);
+    overflow:hidden;transition:.2s;
+  }
+  .faq-item:hover{border-color:#3b4457;}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;cursor:pointer;
+    padding:17px 20px;font-size:15.5px;font-weight:600;color:var(--text);
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    font-family:inherit;
+  }
+  .faq-q i{
+    font-style:normal;font-size:19px;color:var(--accent);flex-shrink:0;
+    transition:transform .25s;line-height:1;
+  }
+  .faq-item.open .faq-q i{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;overflow:hidden;transition:max-height .3s ease;
+  }
+  .faq-a p{
+    padding:0 20px 18px;font-size:14.2px;color:var(--text-dim);
+  }
+
+  /* ===== 提示条 ===== */
+  .notice{
+    background:linear-gradient(120deg,rgba(255,61,110,.09),rgba(255,176,46,.07));
+    border:1px solid rgba(255,61,110,.25);border-radius:var(--radius);
+    padding:24px 26px;display:flex;gap:18px;align-items:flex-start;
+  }
+  .notice-icon{
+    width:42px;height:42px;border-radius:11px;flex-shrink:0;
+    background:rgba(255,61,110,.16);display:flex;align-items:center;justify-content:center;
+    font-size:20px;
+  }
+  .notice h3{font-size:16.5px;font-weight:700;margin-bottom:8px;}
+  .notice p{font-size:14px;color:var(--text-dim);}
+
+  /* ===== 页脚 ===== */
+  .site-footer{
+    background:#0a0c11;border-top:1px solid var(--line);
+    padding:46px 0 26px;margin-top:10px;
+  }
+  .footer-grid{
+    display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px;margin-bottom:34px;
+  }
+  .footer-brand p{font-size:13.6px;color:var(--text-mute);margin-top:14px;max-width:320px;}
+  .footer-col h4{font-size:14.5px;font-weight:700;margin-bottom:14px;color:var(--text);}
+  .footer-col li{margin-bottom:9px;}
+  .footer-col a{font-size:13.6px;color:var(--text-mute);transition:.2s;}
+  .footer-col a:hover{color:var(--accent);}
+  .footer-bottom{
+    border-top:1px solid var(--line);padding-top:20px;
+    display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    font-size:13px;color:var(--text-mute);
+  }
+
+  /* ===== 响应式 ===== */
+  @media (max-width:1024px){
+    .hero-grid{grid-template-columns:1fr;gap:34px;}
+    .hero h1{font-size:33px;}
+    .cat-grid{grid-template-columns:repeat(2,1fr);}
+    .steps{grid-template-columns:repeat(2,1fr);}
+    .browse-layout{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:760px){
+    .main-nav{
+      display:none;position:absolute;top:64px;left:0;right:0;
+      flex-direction:column;align-items:stretch;gap:2px;
+      background:var(--bg-soft);border-bottom:1px solid var(--line);
+      padding:10px 16px 16px;
+    }
+    .main-nav.show{display:flex;}
+    .main-nav a{padding:11px 12px;}
+    .nav-toggle{display:block;}
+    .header-cta{display:none;}
+    .hero{padding:44px 0 40px;}
+    .hero h1{font-size:27px;}
+    .hero p.lead{font-size:15px;}
+    .hero-stats{gap:22px;}
+    section{padding:44px 0;}
+    .sec-head h2{font-size:22px;}
+    .cat-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;}
+    .guide-grid{grid-template-columns:1fr;}
+    .feature-card{grid-template-columns:1fr;}
+    .feature-cover{height:78px;}
+    .footer-grid{grid-template-columns:1fr;gap:24px;}
+    .notice{flex-direction:column;gap:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">51</span>
+      <span>51<span class="hl">短视频</span></span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#categories" class="active">内容分类</a>
+      <a href="#browse">热门浏览</a>
+      <a href="#create">创作入门</a>
+      <a href="#guide">使用指南</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <a href="#create" class="header-cta">开始了解创作</a>
+    <button class="nav-toggle" id="navToggle" aria-label="展开导航">☰</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="hero-tag"><i></i>短视频内容浏览与创作入门</span>
+        <h1>51短视频：<em>看懂短视频</em>，从浏览到发布的完整入门</h1>
+        <p class="lead">
+          很多人第一次接触短视频，最关心的是三件事：在哪里看、看什么内容、自己能不能拍。
+          本页围绕 51短视频 这一主题，梳理短视频的常见分类、观看方式、拍摄剪辑思路与发布注意事项，
+          为刚入门的用户提供一份可操作的参考。
+        </p>
+        <div class="hero-actions">
+          <a href="#categories" class="btn btn-primary">浏览内容分类</a>
+          <a href="#create" class="btn btn-ghost">查看创作步骤</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>6 类</strong><span>常见内容方向</span></div>
+          <div><strong>4 步</strong><span>新手创作流程</span></div>
+          <div><strong>8 问</strong><span>高频疑问解答</span></div>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <div class="panel-head">
+          <h3>内容方向速览</h3>
+          <span>按兴趣选择</span>
+        </div>
+        <ul class="shot-list">
+          <li class="shot-item">
+            <div class="shot-thumb t1">生</div>
+            <div class="shot-info">
+              <strong>生活记录</strong>
+              <span>日常片段、vlog、城市见闻</span>
+            </div>
+            <span class="shot-badge">易上手</span>
+          </li>
+          <li class="shot-item">
+            <div class="shot-thumb t2">知</div>
+            <div class="shot-info">
+              <strong>知识科普</strong>
+              <span>技能讲解、经验分享、工具用法</span>
+            </div>
+            <span class="shot-badge">耐看</span>
+          </li>
+          <li class="shot-item">
+            <div class="shot-thumb t3">娱</div>
+            <div class="shot-info">
+              <strong>娱乐搞笑</strong>
+              <span>段子、剧情、配音与二创</span>
+            </div>
+            <span class="shot-badge">传播快</span>
+          </li>
+          <li class="shot-item">
+            <div class="shot-thumb t4">技</div>
+            <div class="shot-info">
+              <strong>技能教程</strong>
+              <span>美食、手工、运动、软件操作</span>
+            </div>
+            <span class="shot-badge">实用</span>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 内容分类 -->
+  <section id="categories">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Categories</div>
+        <h2>短视频常见的内容分类</h2>
+        <p>
+          短视频并不是单一类型，不同方向的观看节奏、拍摄难度和受众关注点差别很大。
+          下面按内容属性划分六个常见方向，方便你判断自己更想看什么、更适合拍什么。
+        </p>
+      </div>
+      <div class="cat-grid">
+        <article class="cat-card">
+          <div class="cat-icon">🎬</div>
+          <h3>生活记录</h3>
+          <p>以真实日常为主线，节奏舒缓，强调画面氛围与叙事连贯性，对设备要求较低，适合刚接触拍摄的用户。</p>
+        </article>
+        <article class="cat-card">
+          <div class="cat-icon">📚</div>
+          <h3>知识科普</h3>
+          <p>围绕一个明确问题展开讲解，重点在信息准确与结构清晰，通常需要提前写好脚本或提纲。</p>
+        </article>
+        <article class="cat-card">
+          <div class="cat-icon">😂</div>
+          <h3>娱乐搞笑</h3>
+          <p>依靠节奏、反转和情绪调动吸引观看，对表演与剪辑节奏要求较高，适合有创意表达意愿的用户。</p>
+        </article>
+        <article class="cat-card">
+          <div class="cat-icon">🍳</div>
+          <h3>技能教程</h3>
+          <p>美食、手工、健身、软件操作等操作类内容，强调步骤完整、画面清晰，观众目的性强。</p>
+        </article>
+        <article class="cat-card">
+          <div class="cat-icon">🎵</div>
+          <h3>音乐舞蹈</h3>
+          <p>以音乐、舞蹈、演奏等表演形式为主，对收音和画面稳定性要求较高，节奏感是核心。</p>
+        </article>
+        <article class="cat-card">
+          <div class="cat-icon">🧭</div>
+          <h3>旅行户外</h3>
+          <p>记录出行路线、风景与体验，通常需要兼顾环境介绍与个人感受，拍摄周期相对较长。</p>
+        </article>
+        <article class="cat-card">
+          <div class="cat-icon">🛠️</div>
+          <h3>数码评测</h3>
+          <p>围绕产品功能与使用体验展开，强调客观描述与实际场景展示，避免夸大表述。</p>
+        </article>
+        <article class="cat-card">
+          <div class="cat-icon">👨‍👩‍👧</div>
+          <h3>亲子家庭</h3>
+          <p>记录家庭互动与成长片段，内容温馨，但发布前需特别注意未成年人隐私保护。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 热门浏览 -->
+  <section id="browse">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Browse</div>
+        <h2>浏览短视频时可以关注什么</h2>
+        <p>
+          同样一条短视频，有人只看热闹，有人能看出结构和方法。下面从内容结构、画面表达和互动设计三个角度，
+          说明浏览时值得留意的细节，也方便你把这些观察用到自己的创作中。
+        </p>
+      </div>
+
+      <div class="browse-layout">
+        <div class="feature-list">
+          <article class="feature-card">
+            <div class="feature-cover t1">开头</div>
+            <div class="feature-body">
+              <h3>前几秒决定了是否继续观看</h3>
+              <p>短视频的观看决策通常发生得很早。一个明确的画面、一句直接的问题或一个反常识的场景，往往比缓慢铺垫更容易留住观众。浏览时可以留意：这条视频用什么方式在开头给出信息。</p>
+              <div class="meta-row"><span>结构</span><span>节奏</span><span>留人</span></div>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-cover t2">画面</div>
+            <div class="feature-body">
+              <h3>画面稳定性与信息清晰度</h3>
+              <p>横屏与竖屏的构图逻辑不同，主体位置、字幕大小、光线方向都会影响观看体验。竖屏内容通常需要把关键信息放在画面中部，避免被界面元素遮挡。</p>
+              <div class="meta-row"><span>构图</span><span>光线</span><span>字幕</span></div>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-cover t3">声音</div>
+            <div class="feature-body">
+              <h3>人声、配乐与环境音的比例</h3>
+              <p>很多新手视频的问题不在画面，而在声音。人声过小、配乐过响、环境底噪明显，都会明显降低观看完成度。浏览时可以对比一下优质内容的音量层次。</p>
+              <div class="meta-row"><span>收音</span><span>配乐</span><span>降噪</span></div>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-cover t4">互动</div>
+            <div class="feature-body">
+              <h3>结尾引导与评论区氛围</h3>
+              <p>结尾提出一个具体问题、留下一个可讨论的观点，往往比单纯的"点赞关注"更容易带来真实互动。评论区的内容也常常反映这条视频真正被关注的点。</p>
+              <div class="meta-row"><span>互动</span><span>评论</span><span>话题</span></div>
+            </div>
+          </article>
+        </div>
+
+        <aside>
+          <div class="side-box">
+            <h3>浏览时容易被忽略的细节</h3>
+            <ul class="tip-list">
+              <li>字幕是否与语音同步，错别字是否明显</li>
+              <li>转场是否生硬，有没有为了炫技打断叙事</li>
+              <li>信息密度是否均匀，中段是否明显拖沓</li>
+              <li>封面与标题是否和内容一致，有无夸大</li>
+              <li>画面比例是否统一，有无黑边或拉伸</li>
+              <li>是否标注了信息来源或引用出处</li>
+            </ul>
+          </div>
+
+          <div class="side-box">
+            <h3>新手常看的内容方向</h3>
+            <ul class="rank-list">
+              <li><span class="rank-num">1</span><span class="rt">生活记录与日常 vlog</span><em>门槛低</em></li>
+              <li><span class="rank-num">2</span><span class="rt">软件与工具操作教程</span><em>实用</em></li>
+              <li><span class="rank-num">3</span><span class="rt">美食制作与探店</span><em>易理解</em></li>
+              <li><span class="rank-num">4</span><span class="rt">健身与运动跟练</span><em>目的强</em></li>
+              <li><span class="rank-num">5</span><span class="rt">知识科普与经验分享</span><em>耐看</em></li>
+              <li><span class="rank-num">6</span><span class="rt">音乐翻唱与乐器演奏</span><em>氛围感</em></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 创作入门 -->
+  <section id="create">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Getting Started</div>
+        <h2>从零开始做一条短视频的四个步骤</h2>
+        <p>
+          短视频创作并不需要复杂设备，但需要清晰的流程。下面四个步骤覆盖了从想法到发布的完整链路，
+          适合第一次尝试拍摄的用户按顺序推进。
+        </p>
+      </div>
+      <div class="steps">
+        <article class="step-card">
+          <span class="step-num">01</span>
+          <h3>确定主题与脚本</h3>
+          <p>先想清楚这条视频要解决什么问题或传达什么信息，再用几句话写出结构：开头讲什么、中间讲什么、结尾落在哪里。脚本不必复杂，但要能指导拍摄。</p>
+        </article>
+        <article class="step-card">
+          <span class="step-num">02</span>
+          <h3>拍摄与素材收集</h3>
+          <p>手机即可满足大多数场景。注意保持画面稳定、光线充足、收音清晰，同一场景多拍几条备用。竖屏内容建议把主体放在画面中部。</p>
+        </article>
+        <article class="step-card">
+          <span class="step-num">03</span>
+          <h3>剪辑与字幕处理</h3>
+          <p>按脚本顺序拼接素材，删掉多余停顿，控制整体时长。字幕要与人声同步，字体大小以手机竖屏观看清晰为准，背景音乐音量不要压过人声。</p>
+        </article>
+        <article class="step-card">
+          <span class="step-num">04</span>
+          <h3>检查与发布</h3>
+          <p>发布前完整看一遍成片，检查画面比例、字幕错别字、音量平衡和内容合规性。标题与封面应如实反映内容，避免误导性表述。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section id="guide" class="guide-section">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Guide</div>
+        <h2>短视频使用与创作的实用建议</h2>
+        <p>以下内容从观看习惯、内容选择、创作心态和发布规范四个方面展开，帮助你在使用短视频类平台时更有效率，也更稳妥。</p>
+      </div>
+
+      <div class="guide-grid">
+        <article class="guide-article">
+          <h3>如何安排观看时间</h3>
+          <p>短视频的特点是单条时长短、切换成本低，容易在不知不觉中消耗大量时间。比较实用的做法是：<strong>提前设定一个观看时段</strong>，比如通勤路上或饭后休息，而不是随时随地打开。</p>
+          <p>如果发现自己频繁无目的滑动，可以尝试主动搜索感兴趣的主题，把被动推荐变成主动查找。这样既能减少无效浏览，也更容易找到真正有用的内容。</p>
+        </article>
+
+        <article class="guide-article">
+          <h3>怎样筛选有价值的内容</h3>
+          <p>判断一条内容是否值得看，可以从三个角度入手：<strong>信息是否具体</strong>、<strong>来源是否可查</strong>、<strong>结论是否有前提条件</strong>。凡是只给结论不谈条件的说法，都需要多留一分谨慎。</p>
+          <p>涉及健康、理财、法律等专业领域的内容，建议以权威渠道的信息为准，短视频可以作为了解入口，但不宜作为唯一依据。</p>
+        </article>
+
+        <article class="guide-article">
+          <h3>新手创作的常见心态问题</h3>
+          <p>很多人卡在第一步，是因为总想做出"完美的一条"。实际上，前几条视频的主要作用是熟悉流程，而不是追求效果。先完成，再优化，是比较现实的做法。</p>
+          <p>另外，不必急于对标成熟创作者。设备和经验差距客观存在，把注意力放在<strong>内容是否讲清楚</strong>上，比纠结画质更有意义。</p>
+        </article>
+
+        <article class="guide-article">
+          <h3>发布前需要注意的规范</h3>
+          <p>发布内容时，应确保画面、音乐、字体等素材来源合法，避免直接搬运他人作品。涉及他人肖像、未成年人画面或私人场所时，需事先取得同意。</p>
+          <p>同时，标题和封面应如实描述内容，不使用夸大或误导性表述。不同平台的具体规则会有差异，发布前建议查阅对应平台的社区规范。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 常见问题 -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">FAQ</div>
+        <h2>关于 51短视频 的常见问题</h2>
+        <p>以下问题来自短视频新手最常提出的疑问，回答以通用经验为主，具体规则请以你所使用平台的官方说明为准。</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">51短视频主要提供什么内容？<i>+</i></button>
+          <div class="faq-a"><p>从名称来看，它属于短视频类内容平台，通常以短时长视频为主要形式，覆盖生活、娱乐、知识、技能等多个方向。具体的内容范围、栏目设置和功能，建议以你实际访问的平台页面为准。</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">看短视频需要注册账号吗？<i>+</i></button>
+          <div class="faq-a"><p>多数短视频平台允许未登录状态下浏览部分内容，但收藏、评论、关注等功能通常需要登录。是否必须注册，取决于平台的具体设计，建议查看其帮助中心说明。</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">没有专业设备可以拍短视频吗？<i>+</i></button>
+          <div class="faq-a"><p>可以。目前主流手机的拍摄能力足以应对大多数日常场景。相比设备，画面稳定性、光线条件和收音清晰度对观看体验的影响更大，这三项通过简单调整就能明显改善。</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">一条短视频多长比较合适？<i>+</i></button>
+          <div class="faq-a"><p>没有统一标准，取决于内容类型。知识讲解类通常需要足够时间把问题说清，娱乐类则更依赖节奏紧凑。判断依据是：内容是否讲完，有没有多余部分。删掉不影响理解的内容，时长自然会落到合适的区间。</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">剪辑软件怎么选？<i>+</i></button>
+          <div class="faq-a"><p>新手可以先使用手机自带的剪辑功能或常见的免费剪辑应用，掌握裁剪、拼接、字幕、配乐这几项基础操作后再考虑进阶工具。功能多少不是关键，能否熟练使用才是。</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">可以直接使用他人的视频素材吗？<i>+</i></button>
+          <div class="faq-a"><p>不建议直接搬运。使用他人素材涉及著作权问题，除非获得授权或属于合理使用范围，否则存在侵权风险。需要使用素材时，可优先选择明确标注可商用或可免费使用的资源，并留意其授权条件。</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">视频发布后可以修改吗？<i>+</i></button>
+          <div class="faq-a"><p>不同平台的处理方式不同，有的允许修改标题、封面等部分信息，有的则要求删除后重新发布。发布前完整检查一遍，是更稳妥的做法。</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">如何避免长时间刷视频影响作息？<i>+</i></button>
+          <div class="faq-a"><p>可以借助手机自带的屏幕使用时间管理功能，为短视频类应用设置每日时长上限；也可以把应用放在不显眼的位置，增加打开成本。关键是把浏览安排在有明确边界的时间段内。</p></div>
+        </div>
+      </div>
+
+      <div class="notice" style="margin-top:34px;">
+        <div class="notice-icon">💡</div>
+        <div>
+          <h3>使用提示</h3>
+          <p>本页面为短视频主题的信息整理页面，内容以通用经验和方法说明为主，不涉及任何具体平台的账号、下载或付费引导。实际使用短视频类产品或发布内容时，请以对应平台的官方规则和当地法律法规为准，注意保护个人信息与版权。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-mark">51</span>
+          <span>51<span class="hl">短视频</span></span>
+        </a>
+        <p>围绕短视频的浏览、创作与使用整理的信息参考页面，帮助新手了解短视频的基本概念、常见分类与操作方法。</p>
+      </div>
+      <div class="footer-col">
+        <h4>内容导航</h4>
+        <ul>
+          <li><a href="#categories">内容分类</a></li>
+          <li><a href="#browse">热门浏览</a></li>
+          <li><a href="#create">创作入门</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>使用帮助</h4>
+        <ul>
+          <li><a href="#guide">使用指南</a></li>
+          <li><a href="#faq">常见问题</a></li>
+          <li><a href="#create">拍摄步骤</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>相关主题</h4>
+        <ul>
+          <li><a href="#categories">短视频分类</a></li>
+          <li><a href="#guide">剪辑与字幕</a></li>
+          <li><a href="#guide">发布规范</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 51短视频 · 内容参考页面</span>
+      <span>页面内容以通用经验整理，具体规则请以官方说明为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 移动端导航展开
+  var navToggle = document.getElementById('navToggle');
+  var mainNav = document.getElementById('mainNav');
+  if (navToggle && mainNav) {
+    navToggle.addEventListener('click', function () {
+      mainNav.classList.toggle('show');
+    });
+    mainNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mainNav.classList.remove('show');
+      });
+    });
+  }
+
+  // FAQ 折叠
+  document.querySelectorAll('.faq-item').forEach(function (item) {
+    var btn = item.querySelector('.faq-q');
+    var ans = item.querySelector('.faq-a');
+    if (!btn || !ans) return;
+    btn.addEventListener('click', function () {
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function (other) {
+        other.classList.remove('open');
+        var oa = other.querySelector('.faq-a');
+        if (oa) oa.style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // 导航高亮
+  var sections = document.querySelectorAll('main section[id]');
+  var navLinks = document.querySelectorAll('.main-nav a');
+  if ('IntersectionObserver' in window && sections.length) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.getAttribute('id');
+          navLinks.forEach(function (l) {
+            l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(function (s) { observer.observe(s); });
+  }
+</script>
+
+</body>
+  </html>
